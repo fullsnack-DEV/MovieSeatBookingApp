@@ -1,11 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Header from "../Components/Header";
+import Screen from "../Components/Screen";
 
-export default function HomeScreen() {
+//Color Imports
+import { COLORS } from "../Config/Colorpallet";
+
+export default function HomeScreen({ navigation }) {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Screen>
+      <Header />
+    </Screen>
   );
 }
 

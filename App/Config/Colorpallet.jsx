@@ -2,7 +2,7 @@
 
 export const COLORS = {
   primary: "#fff",
-  secondary: "",
+  secondary: "#9CA4AD",
   body: "#090A0E",
   error: "",
 };
