@@ -7,6 +7,7 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
+import { getmovies } from "../api/Endpoints";
 import { Categories } from "../Data/Categories";
 
 //Custom Hooks
@@ -98,6 +99,7 @@ export default function AnimatedMovieList({ endpoint, title }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   listcontainer: {
     flex: 0.84,
