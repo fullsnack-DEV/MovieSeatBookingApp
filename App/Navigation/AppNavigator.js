@@ -43,7 +43,7 @@ export default function AppNavigator() {
         component={HomeNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <AntDesign name="home" size={size * 1.2} color={color} />
+            <AntDesign name="home" size={size * 1.1} color={color} />
           ),
         }}
       />
@@ -54,7 +54,7 @@ export default function AppNavigator() {
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons
               name="favorite-border"
-              size={size * 1.2}
+              size={size * 1.1}
               color={color}
             />
           ),
@@ -65,7 +65,7 @@ export default function AppNavigator() {
         component={TicketNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <Foundation name="ticket" size={size * 1.2} color={color} />
+            <Foundation name="ticket" size={size * 1.1} color={color} />
           ),
         }}
       />
@@ -74,7 +74,7 @@ export default function AppNavigator() {
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <AntDesign name="user" size={size * 1.2} color={color} />
+            <AntDesign name="user" size={size * 1.1} color={color} />
           ),
         }}
       />

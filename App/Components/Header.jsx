@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+
 import UserLogo from "../../assets/UesrIcon.png";
 import { COLORS } from "../Config/Colorpallet";
-import { WIDTH, HEIGHT } from "../Utils/Utils";
+
+import { WIDTH } from "../Utils/Utils";
 
 export default function Header() {
   return (
     <View style={styles.container}>
-      <View style={styles.name}>
+      <View>
         <Text style={styles.heading}>
           <Text style={styles.headingspan}>Hello</Text> Peter!
         </Text>
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
   },
   headingspan: {
     fontWeight: "bold",
+    color: "orangered",
   },
   img: {
     height: 60,
