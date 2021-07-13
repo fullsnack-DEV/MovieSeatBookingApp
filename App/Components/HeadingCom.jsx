@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FONTSTYLE } from "../Config/FontStyles";
-import { width, height } from "../Utils/Utils";
 
 export default function HeadingCom({ title }) {
   return (
@@ -15,10 +14,13 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     textAlign: "center",
-    marginHorizontal: 15,
+    marginHorizontal: 18,
+
+    marginVertical: 8,
+    alignSelf: "flex-start",
+    borderRadius: 10,
   },
   heading: {
     ...FONTSTYLE.heading1,
-    color: "#ECEDED",
   },
 });

@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 20,
     color: COLORS.primary,
+    fontFamily: "Nunito_I",
 
     letterSpacing: 1,
   },
@@ -41,11 +42,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginVertical: 3,
     color: COLORS.secondary,
+    fontFamily: "Nunito_I",
     letterSpacing: 1,
   },
   headingspan: {
     fontWeight: "bold",
     color: "orangered",
+    fontFamily: "Nunito_I",
   },
   img: {
     height: 60,

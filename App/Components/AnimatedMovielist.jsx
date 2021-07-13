@@ -9,33 +9,59 @@ import {
 } from "react-native";
 import { getmovies } from "../api/Endpoints";
 import { Categories } from "../Data/Categories";
-
-//Custom Hooks
-import useApi from "../Hooks/useApi";
+//Component Import
+import HeadingCom from "./HeadingCom";
 import Animatedmovielist from "./AnimatedmovielCom";
 import CateogryList from "./CateogryList";
 
-//Component Import
-import HeadingCom from "./HeadingCom";
-
 const { width, height } = Dimensions.get("screen");
 
-const ITEM_SIZE = width * 0.72;
+//Custom Hooks
+import useApi from "../Hooks/useApi";
+
+//Width and Sizes
+const ITEM_SIZE = width * 0.65;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
-export default function AnimatedMovieList({ endpoint, title }) {
+//MainFuntion
+
+export default function AnimatedMovieList({ endpoint, title, navigation }) {
+  //Ref for Sliding the Flatlist
+  const flatList = useRef();
+
+  //Animations
   const Xsscroll = useRef(new Animated.Value(0)).current;
-  const { data: Movies, Loding, Error, Request: LoadMovies } = useApi(endpoint);
+
+  // API Hooks
+  const { data: Movies, Loding, Error } = useApi(endpoint);
+
+  //State for Movies
+  const [newData, SetnewData] = useState([...Movies]);
 
   useEffect(() => {
-    LoadMovies();
-    console.log("I am rendering 3");
-  }, []);
+    SetnewData([{ key: "left-s" }, ...Movies, { key: "right-s" }]);
+    console.log("REnders");
+  }, [Movies]);
 
-  const movies = Movies.splice(0, 10);
+  //Ref
 
-  const Moviedata = [{ key: "left-s" }, ...movies, { key: "right-s" }];
+  //State for Cateogries
+  const [Selected, SetSelected] = useState();
 
+  //Setting Cateogries
+  const getcat = (cateogry) => {
+    const newcat = Movies.filter((m) => m.genre_ids.includes(cateogry.genres));
+
+    SetnewData([{ key: "left-s" }, ...newcat, { key: "right-s" }]);
+
+    SetSelected(cateogry);
+  };
+
+  const flatref = () => {
+    flatList.current.scrollToIndex({ index: 0 });
+  };
+
+  //MainReturn
   return (
     <View style={styles.listcontainer}>
       <HeadingCom title={title} />
@@ -50,7 +76,16 @@ export default function AnimatedMovieList({ endpoint, title }) {
           ListFooterComponent={<View style={{ width: 30 }} />}
           renderItem={({ item }) => {
             return (
-              <CateogryList item={item} icon={item.icon} title={item.name} />
+              <CateogryList
+                onPress={() => getcat(item)}
+                icon={item.icon}
+                title={item.name}
+                stylebg={{
+                  backgroundColor:
+                    Selected?.id == item.id ? "#DFEEEA" : "#3E424E",
+                  color: Selected?.id == item.id ? "#000" : "#fff",
+                }}
+              />
             );
           }}
         />
@@ -58,8 +93,12 @@ export default function AnimatedMovieList({ endpoint, title }) {
       <View style={styles.movielist}>
         <Animated.FlatList
           style={styles.flatlist}
+          pagingEnabled
+          ref={flatList}
           keyExtractor={(_, index) => index.toString()}
-          data={Moviedata}
+          extraData={newData}
+          data={newData}
+          onContentSizeChange={() => flatref()}
           snapToInterval={ITEM_SIZE}
           scrollEventThrottle={16}
           decelerationRate={"fast"}
@@ -91,6 +130,7 @@ export default function AnimatedMovieList({ endpoint, title }) {
                 item={item}
                 translateX={translateX}
                 index={index}
+                onPress={() => navigation.navigate("Detail")}
               />
             );
           }}
@@ -104,10 +144,12 @@ const styles = StyleSheet.create({
   listcontainer: {
     flex: 0.84,
 
-    marginTop: "10%",
+    marginTop: "3%",
   },
   cateogries: {
     marginVertical: 20,
+
+    marginTop: "2%",
   },
   movielist: {
     flex: 1.2,

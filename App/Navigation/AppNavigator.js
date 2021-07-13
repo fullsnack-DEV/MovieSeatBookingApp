@@ -26,15 +26,11 @@ export default function AppNavigator() {
         showLabel: false,
 
         style: {
-          backgroundColor: "transparent",
+          backgroundColor: "#333333",
           borderTopWidth: 0,
           position: "absolute",
-          left: 12,
-          right: 12,
-          bottom: 0,
+
           height: 50,
-          paddingBottom: 10,
-          elevation: 0,
         },
       }}
     >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const useApi = (apifunc) => {
   //state for loading
@@ -10,25 +10,28 @@ const useApi = (apifunc) => {
 
   //Requsting a data
 
-  const Request = async () => {
-    try {
-      SetLoading(true);
+  useEffect(() => {
+    const Request = async () => {
+      try {
+        SetLoading(true);
 
-      const response = await apifunc();
+        const response = await apifunc();
 
-      Setdata(response.data.results);
+        Setdata(response.data.results);
 
-      SetLoading(false);
-    } catch (error) {
-      SetError(error);
-    }
-  };
+        SetLoading(false);
+      } catch (error) {
+        SetError(error);
+      }
+    };
+
+    Request();
+  }, []);
 
   return {
     data,
     Loading,
     Error,
-    Request,
   };
 };
 

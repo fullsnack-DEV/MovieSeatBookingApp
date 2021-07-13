@@ -15,12 +15,12 @@ const ITEM_SIZE = width * 0.72;
 
 console.log(ITEM_SIZE);
 
-export default function CateogryList({ onPress, icon, title }) {
+export default function CateogryList({ onPress, icon, title, stylebg }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, stylebg]}>
         <Text style={styles.icon}>{icon}</Text>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={[styles.title, stylebg]}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   wrapper: {
     height: ITEM_SIZE * 0.12,
 
-    padding: 10,
     backgroundColor: "#3E424E",
     alignItems: "center",
     justifyContent: "center",
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     textAlign: "center",
 
-    width: ITEM_SIZE * 0.45,
+    width: ITEM_SIZE * 0.47,
   },
   icon: {
     fontSize: 17,
@@ -49,5 +48,8 @@ const styles = StyleSheet.create({
   title: {
     ...FONTSTYLE.smalltitle,
     color: "#fff",
+    letterSpacing: 1.9,
+    fontFamily: "Nunito_B",
+    marginHorizontal: "3%",
   },
 });

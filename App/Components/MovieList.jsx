@@ -9,11 +9,7 @@ const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
 export default function MovieList({ endpoint, title }) {
-  const { data: Movies, Loding, Error, Request: LoadMovies } = useApi(endpoint);
-
-  useEffect(() => {
-    LoadMovies();
-  }, []);
+  const { data: Movies, Loding, Error } = useApi(endpoint);
 
   const movies = Movies.splice(0, 10);
 
@@ -27,6 +23,9 @@ export default function MovieList({ endpoint, title }) {
         data={Moviesdata}
         keyExtractor={(_, index) => index.toString()}
         horizontal
+        pagingEnabled
+        snapToInterval={ITEM_SIZE * 0.63}
+        decelerationRate={"fast"}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
           if (!item.poster_path) {
