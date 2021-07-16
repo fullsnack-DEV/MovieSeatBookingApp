@@ -133,7 +133,11 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
                 item={item}
                 translateX={translateX}
                 index={index}
-                onPress={() => navigation.navigate("Detail")}
+                onPress={() =>
+                  navigation.navigate("Detail", {
+                    item,
+                  })
+                }
               />
             );
           }}
