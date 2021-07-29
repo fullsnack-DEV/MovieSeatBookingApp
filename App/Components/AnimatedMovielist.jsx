@@ -98,6 +98,11 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
           style={styles.flatlist}
           pagingEnabled
           ref={flatList}
+          initialNumToRender={10}
+          windowSize={50}
+          maxToRenderPerBatch={5}
+          updateCellsBatchingPeriod={30}
+          onEndReachedThreshold={0.1}
           keyExtractor={(_, index) => index.toString()}
           extraData={trigger}
           data={newData}

@@ -67,7 +67,7 @@ export default function Bannerimg({ item }) {
 const styles = StyleSheet.create({
   container: { alignItems: "center", alignContent: "center" },
   imgcontainer: {
-    height: height * 0.4,
+    height: height * 0.55,
     width: width,
   },
   infocontainer: {
