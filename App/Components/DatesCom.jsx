@@ -2,25 +2,40 @@ import React from "react";
 import { View, Text, StyleSheet, Dimensions, Animated } from "react-native";
 import { COLORS } from "../Config/Colorpallet";
 
-const { width, height } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("window");
 
 const ITEM_SIZE = width * 0.17;
 
-export default function DatesCom({ Date, Day, translateY }) {
+export default function DatesCom({
+  Date,
+  Day,
+  opacity,
+  scale,
+  scaleY,
+  backgroundColor,
+}) {
   return (
-    <Animated.View
-      style={[
-        styles.container,
-        {
-          transform: [{ translateY: translateY }],
-        },
-      ]}
-    >
-      <Text style={styles.daytxt}>{Day}</Text>
-      <Text style={styles.datetxt}>{Date}</Text>
-      <View style={styles.holes} />
-      <View style={styles.holes2} />
-      <View style={styles.holes3} />
+    <Animated.View>
+      <Animated.View
+        style={[
+          styles.container,
+
+          {
+            opacity,
+            transform: [
+              {
+                scale,
+              },
+            ],
+          },
+        ]}
+      >
+        <Text style={styles.daytxt}>{Day}</Text>
+        <Text style={styles.datetxt}>{Date}</Text>
+        <View style={styles.holes} />
+        <View style={styles.holes2} />
+        <View style={styles.holes3} />
+      </Animated.View>
     </Animated.View>
   );
 }
@@ -28,13 +43,12 @@ export default function DatesCom({ Date, Day, translateY }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ff443a",
-    top: "15%",
-    width: ITEM_SIZE,
+    width: width * 0.17,
     height: ITEM_SIZE * 1.5,
     borderRadius: 13,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 30,
+    marginTop: 35,
   },
   holes: {
     width: 10,

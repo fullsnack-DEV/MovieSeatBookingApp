@@ -79,8 +79,6 @@ const styles = StyleSheet.create({
     width: width / 1.16,
     position: "absolute",
 
-    borderColor: "red",
-    borderWidth: 1,
     top: height * 0.15,
   },
   heading: {
