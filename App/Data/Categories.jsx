@@ -25,9 +25,9 @@ export const Categories = [
   },
   {
     id: 5,
-    name: "Romance",
-    icon: "🥰",
-    genres: 10749,
+    name: "Crime",
+    icon: "👿",
+    genres: 80,
   },
 ];
 

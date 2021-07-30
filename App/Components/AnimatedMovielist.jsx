@@ -96,7 +96,6 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
       <View style={styles.movielist}>
         <Animated.FlatList
           style={styles.flatlist}
-          pagingEnabled
           ref={flatList}
           initialNumToRender={10}
           windowSize={50}

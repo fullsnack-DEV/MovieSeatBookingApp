@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StatusBar } from "react-native";
 import Bannerimg from "../Components/Bannerimg";
 import DatesCom from "../Components/DatesCom";
+import DatesListCom from "../Components/datesListCom";
 import Screen from "../Components/Screen";
 
 export default function DetailScreen({ route }) {
@@ -11,7 +12,7 @@ export default function DetailScreen({ route }) {
   return (
     <Screen>
       <Bannerimg item={item} />
-      <DatesCom />
+      <DatesListCom />
     </Screen>
   );
 }

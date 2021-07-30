@@ -35,7 +35,7 @@ export default function Bannerimg({ item }) {
           colors={["transparent", "#000"]}
           style={{
             width: 800,
-            height: 750,
+            height: "180%",
             position: "absolute",
             bottom: 0,
           }}
@@ -65,11 +65,15 @@ export default function Bannerimg({ item }) {
 }
 
 const styles = StyleSheet.create({
-  container: { alignItems: "center", alignContent: "center" },
+  container: {
+    alignItems: "center",
+    alignContent: "center",
+  },
   imgcontainer: {
     height: height * 0.55,
     width: width,
   },
+
   infocontainer: {
     height: height * 0.4,
     width: width / 1.16,
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
 
     borderColor: "red",
     borderWidth: 1,
-    top: height * 0.2,
+    top: height * 0.15,
   },
   heading: {
     ...FONTSTYLE.heading2,
