@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StatusBar } from "react-native";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import Bannerimg from "../Components/Bannerimg";
 import DatesCom from "../Components/DatesCom";
 import DatesListCom from "../Components/datesListCom";
 import Screen from "../Components/Screen";
 
-export default function DetailScreen({ route }) {
+export default function DetailScreen({ route, navigation }) {
+  //hiding the Tab bar on the Detail Screen
+
   //getting the Item
   const { item } = route.params;
 

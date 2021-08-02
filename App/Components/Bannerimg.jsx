@@ -43,7 +43,9 @@ export default function Bannerimg({ item }) {
       </View>
 
       <View style={styles.infocontainer}>
-        <Text style={styles.heading}>{item.title}</Text>
+        <Text style={styles.heading} numberOfLines={1}>
+          {item.title}
+        </Text>
 
         <View style={styles.rating}>
           <View style={styles.star}>
@@ -56,6 +58,7 @@ export default function Bannerimg({ item }) {
         </View>
         <View style={styles.info}>
           <Text numberOfLines={8} style={styles.para}>
+            {item.overview}
             {item.overview}
           </Text>
         </View>
@@ -79,7 +82,7 @@ const styles = StyleSheet.create({
     width: width / 1.16,
     position: "absolute",
 
-    top: height * 0.15,
+    top: height * 0.21,
   },
   heading: {
     ...FONTSTYLE.heading2,

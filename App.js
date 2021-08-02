@@ -1,5 +1,8 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect } from "react";
+import {
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from "@react-navigation/native";
 //Importing Navigator
 import AppNavigator from "./App/Navigation/AppNavigator";
 import {
@@ -13,7 +16,9 @@ import {
 } from "@expo-google-fonts/nunito";
 import AppLoading from "expo-app-loading";
 
-export default function App() {
+export default function App({ route, navigation }) {
+  //Tab bar Rendering on Specofic Screens
+
   let [fontsloaded, error] = useFonts({
     Nunito_R: Nunito_400Regular,
     Nunito_B: Nunito_700Bold,

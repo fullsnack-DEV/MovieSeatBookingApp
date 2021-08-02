@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FONTSTYLE } from "../Config/FontStyles";
 
-export default function HeadingCom({ title }) {
+export default function HeadingCom({ title, style }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>{title}</Text>
+      <Text style={[styles.heading, style]}>{title}</Text>
     </View>
   );
 }

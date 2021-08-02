@@ -1,5 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 //Importing Icons
 import {
   MaterialCommunityIcons,
@@ -18,9 +19,10 @@ import { color } from "react-native-reanimated";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-export default function AppNavigator() {
+export default function AppNavigator({ route, navigation }) {
   return (
     <Navigator
+      sceneContainerStyle={{ backgroundColor: "#000" }}
       tabBarOptions={{
         activeTintColor: "#1DA1F2",
         showLabel: false,
