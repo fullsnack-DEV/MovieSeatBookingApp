@@ -7,6 +7,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import HomeScreen from "../Screens/HomeScreen";
 import DetailScreen from "../Screens/DetailScreen";
+import CinemaScreen from "../Screens/CinemaScreen";
 const { Navigator, Screen } = createStackNavigator();
 
 export default function HomeNavigator({ route, navigation }) {
@@ -27,6 +28,7 @@ export default function HomeNavigator({ route, navigation }) {
     >
       <Screen name="Home" component={HomeScreen} />
       <Screen name="Detail" component={DetailScreen} />
+      <Screen name="Cinema" component={CinemaScreen} />
     </Navigator>
   );
 }

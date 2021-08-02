@@ -1,22 +1,19 @@
 const Dates = [
-  {
-    date: 15,
-    day: "Sat",
-  },
+  { id: 1, date: 15, day: "Sat" },
 
-  { date: 11, day: "Sun" },
+  { id: 2, date: 11, day: "Sun" },
 
-  { date: 12, day: "Mon" },
+  { id: 3, date: 12, day: "Mon" },
 
-  { date: 14, day: "Tue" },
+  { id: 4, date: 14, day: "Tue" },
 
-  { date: 16, day: "Wen" },
+  { id: 5, date: 16, day: "Wen" },
 
-  { date: 17, day: "Fri" },
+  { id: 6, date: 17, day: "Fri" },
 
-  { date: 18, day: "Sat" },
+  { id: 7, date: 18, day: "Sat" },
 
-  { date: 19, day: "Sun" },
+  { id: 8, date: 19, day: "Sun" },
 ];
 
 export default Dates;

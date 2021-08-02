@@ -1,5 +1,13 @@
-import React from "react";
-import { View, Text, StyleSheet, Dimensions, Animated } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Animated,
+  TouchableWithoutFeedback,
+} from "react-native";
+
 import { COLORS } from "../Config/Colorpallet";
 
 const { width, height } = Dimensions.get("window");
@@ -11,39 +19,41 @@ export default function DatesCom({
   Day,
   opacity,
   scale,
-  scaleY,
-  backgroundColor,
+  stylebg,
+  styletxt,
+  onPress,
 }) {
   return (
-    <Animated.View>
-      <Animated.View
-        style={[
-          styles.container,
+    <TouchableWithoutFeedback onPress={onPress}>
+      <Animated.View>
+        <Animated.View
+          style={[
+            styles.container,
+            stylebg,
 
-          {
-            opacity,
-            transform: [
-              {
-                scale,
-                translateY: scale,
-              },
-            ],
-          },
-        ]}
-      >
-        <Text style={styles.daytxt}>{Day}</Text>
-        <Text style={styles.datetxt}>{Date}</Text>
-        <View style={styles.holes} />
-        <View style={styles.holes2} />
-        <View style={styles.holes3} />
+            {
+              opacity,
+              transform: [
+                {
+                  scale,
+                },
+              ],
+            },
+          ]}
+        >
+          <Text style={[styles.daytxt, styletxt]}>{Day}</Text>
+          <Text style={[styles.datetxt, styletxt]}>{Date}</Text>
+          <View style={styles.holes} />
+          <View style={styles.holes2} />
+          <View style={styles.holes3} />
+        </Animated.View>
       </Animated.View>
-    </Animated.View>
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff443a",
     width: width * 0.17,
     height: ITEM_SIZE * 1.5,
     borderRadius: 13,
@@ -51,6 +61,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 35,
   },
+
   holes: {
     width: 10,
     height: 10,

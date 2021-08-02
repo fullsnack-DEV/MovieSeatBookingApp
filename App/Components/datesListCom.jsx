@@ -20,7 +20,11 @@ const ITEM_SPACING = (width - ITEM_SIZE) / 2;
 //to add the Animation of the Dates
 export default function DatesListCom() {
   //state for the dates data
-
+  const [Selecteditem, setSelecteditem] = useState({
+    id: 4,
+    date: 14,
+    day: "Tue",
+  });
   //creating a animatd Refrance
   const Yscroll = useRef(new Animated.Value(0)).current;
   return (
@@ -64,18 +68,20 @@ export default function DatesListCom() {
               outputRange: [0.75, 0.75, 1, 0.75, 0.75],
             });
 
-            const scaleY = Yscroll.interpolate({
-              inputRange,
-              outputRange: [5, 5, -20, 5, 5],
-            });
-
             return (
               <DatesCom
                 Date={item.date}
+                onPress={() => setSelecteditem(item)}
                 Day={item.day}
                 opacity={opacity}
                 scale={scale}
-                scaleY={scaleY}
+                stylebg={{
+                  backgroundColor:
+                    Selecteditem?.id == item.id ? "#f5f5f5" : "#ff443a",
+                }}
+                styletxt={{
+                  color: Selecteditem?.id == item.id ? "#000" : "#fff",
+                }}
               />
             );
           }}
