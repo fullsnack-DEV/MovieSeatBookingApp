@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { COLORS } from "../Config/Colorpallet";
 import Dates from "../Data/DatesData";
+import ButtnCom from "./ButtnCom";
 import DatesCom from "./DatesCom";
 import HeadingCom from "./HeadingCom";
 const { width, height } = Dimensions.get("window");

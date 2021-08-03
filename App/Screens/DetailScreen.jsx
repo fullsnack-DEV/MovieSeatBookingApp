@@ -17,7 +17,10 @@ export default function DetailScreen({ route, navigation }) {
     <Screen>
       <Bannerimg item={item} />
       <DatesListCom />
-      <ButtnCom onPress={() => navigation.navigate("Cinema")} />
+      <ButtnCom
+        title="Book Seats!"
+        onPress={() => navigation.navigate("Cinema", { name: item.title })}
+      />
     </Screen>
   );
 }

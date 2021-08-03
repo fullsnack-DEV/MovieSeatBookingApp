@@ -14,6 +14,13 @@ export const FONTSTYLE = {
     fontFamily: "Nunito_EB",
     letterSpacing: 5.4,
   },
+  heading3: {
+    fontSize: 19,
+    color: "#fff",
+    fontWeight: "900",
+    fontFamily: "Nunito_I",
+    letterSpacing: 3.5,
+  },
   ratings: {
     fontSize: 14,
     color: "#B6C9F0",

@@ -38,8 +38,6 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
   //State for Movies
   const [newData, SetnewData] = useState([...Movies]);
 
-  const [trigger, Settrigger] = useState(false);
-
   useEffect(() => {
     SetnewData([{ key: "left-s" }, ...Movies, { key: "right-s" }]);
     console.log("REnders");
@@ -57,7 +55,6 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
     SetnewData([{ key: "left-s" }, ...newcat, { key: "right-s" }]);
 
     SetSelected(cateogry);
-    Settrigger(true);
   };
 
   const flatref = () => {
@@ -103,7 +100,7 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
           updateCellsBatchingPeriod={30}
           onEndReachedThreshold={0.1}
           keyExtractor={(_, index) => index.toString()}
-          extraData={trigger}
+          extraData={Selected}
           data={newData}
           onContentSizeChange={() => flatref()}
           snapToInterval={ITEM_SIZE}
