@@ -166,3 +166,6 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
 });
+
+//Todo
+//Cutomize the Tab bar. Make  it round and Sticky

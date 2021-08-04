@@ -1,0 +1,58 @@
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import { COLORS } from "../Config/Colorpallet";
+import { FONTSTYLE } from "../Config/FontStyles";
+
+const { width, height } = Dimensions.get("window");
+const ITEM_SIZE = width * 0.25;
+
+export default function TimeCom({ time, scale, opacity, onPress, stylebg }) {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Animated.View
+        style={[
+          styles.wrapper,
+          stylebg,
+          {
+            opacity,
+            transform: [
+              {
+                translateY: scale,
+              },
+            ],
+          },
+        ]}
+      >
+        <Text style={[styles.txt, stylebg]}>{time}</Text>
+      </Animated.View>
+    </TouchableOpacity>
+  );
+}
+
+const styles = StyleSheet.create({
+  wrapper: {
+    width: ITEM_SIZE,
+
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+  },
+
+  txt: {
+    fontSize: 18,
+    textAlign: "center",
+    textAlignVertical: "center",
+    marginVertical: 12,
+    letterSpacing: 5,
+    color: COLORS.primary,
+    fontWeight: "bold",
+  },
+});

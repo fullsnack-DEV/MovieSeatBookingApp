@@ -2,10 +2,12 @@ import React from "react";
 import Svg, { Path } from "react-native-svg";
 import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, StyleSheet } from "react-native";
+import TimeListCom from "./TimeListCom";
 
 export default function ScreenCom(props) {
   return (
-    <View style={{}}>
+    <View style={styles.wrapper}>
+      <TimeListCom />
       <Svg
         height="100"
         width="500"
@@ -39,10 +41,7 @@ export default function ScreenCom(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 85,
-    borderRadius: 5,
-    backgroundColor: "#fff",
+  wrapper: {
+    marginTop: 60,
   },
 });
