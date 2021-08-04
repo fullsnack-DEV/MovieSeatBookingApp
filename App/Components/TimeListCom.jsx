@@ -76,9 +76,7 @@ export default function TimeListCom() {
               opacity={opacity}
               onPress={() => Setselecteditem(item)}
               stylebg={{
-                backgroundColor:
-                  selecteditem?.id == item.id ? "#ff726f" : "#000",
-                color: selecteditem?.id == item.id ? "#000" : "#fff",
+                color: selecteditem?.id == item.id ? "#ff726b" : "#fff",
               }}
             />
           );

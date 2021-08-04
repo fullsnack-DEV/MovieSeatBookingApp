@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import MovieSeat from "../Components/MovieSeatsCom";
 import Screen from "../Components/Screen";
@@ -8,6 +8,8 @@ import { FONTSTYLE } from "../Config/FontStyles";
 const { width, height } = Dimensions.get("window");
 
 export default function CinemaScreen({ route }) {
+  const [Selectedseats, SetSelectedseats] = useState([]);
+
   //getting the data via routes
   const { name } = route.params;
 

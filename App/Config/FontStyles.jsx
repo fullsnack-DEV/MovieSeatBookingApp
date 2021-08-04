@@ -21,6 +21,13 @@ export const FONTSTYLE = {
     fontFamily: "Nunito_I",
     letterSpacing: 3.5,
   },
+  heading4: {
+    fontSize: 12,
+    color: "#fff",
+
+    fontFamily: "Nunito_R",
+    letterSpacing: 2,
+  },
   ratings: {
     fontSize: 14,
     color: "#B6C9F0",
@@ -28,6 +35,7 @@ export const FONTSTYLE = {
     fontFamily: "Nunito_R",
     letterSpacing: 5.3,
   },
+
   callToaction: {
     fontSize: 16,
     color: "#fff",

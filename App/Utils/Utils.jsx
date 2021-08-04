@@ -1,3 +1,4 @@
+import React from "react";
 import { Dimensions } from "react-native";
 
 const HEIGHT = Dimensions.get("screen").width;

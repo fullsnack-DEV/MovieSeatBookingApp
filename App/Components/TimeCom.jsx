@@ -6,6 +6,7 @@ import {
   Animated,
   Dimensions,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { COLORS } from "../Config/Colorpallet";
 import { FONTSTYLE } from "../Config/FontStyles";
@@ -15,11 +16,11 @@ const ITEM_SIZE = width * 0.25;
 
 export default function TimeCom({ time, scale, opacity, onPress, stylebg }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <Pressable onPress={onPress}>
       <Animated.View
         style={[
           styles.wrapper,
-          stylebg,
+
           {
             opacity,
             transform: [
@@ -32,7 +33,7 @@ export default function TimeCom({ time, scale, opacity, onPress, stylebg }) {
       >
         <Text style={[styles.txt, stylebg]}>{time}</Text>
       </Animated.View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
