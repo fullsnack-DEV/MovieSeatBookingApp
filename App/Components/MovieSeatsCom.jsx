@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import { FONTSTYLE } from "../Config/FontStyles";
 import ButtnCom from "./ButtnCom";
 import Seatsindicator from "./Seatsindicator";
 
@@ -42,6 +43,10 @@ export default function MovieSeat() {
       Setselectedseats([...selectedseats, seat]);
     }
   };
+
+  //pricecalculate
+  let price = 0;
+  price = selectedseats.length * 25;
 
   return (
     <>
@@ -171,7 +176,14 @@ export default function MovieSeat() {
         </View>
       </View>
       <Seatsindicator />
-      <ButtnCom title="Buy ticket" price="25$" />
+      <View style={styles.seattxt}>
+        <Text style={styles.txt}>
+          You have selected{" "}
+          <Text style={styles.txtinside}>{selectedseats.length} </Text>
+          seats.
+        </Text>
+      </View>
+      <ButtnCom title="Buy ticket" price={price} />
     </>
   );
 }
@@ -218,6 +230,20 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
     borderWidth: 0,
+  },
+  seattxt: {
+    top: height * 0.12,
+  },
+  txt: {
+    textAlign: "center",
+    color: "#fff",
+    ...FONTSTYLE.heading4,
+    fontSize: 13,
+  },
+  txtinside: {
+    color: "#DC143C",
+    fontSize: 15,
+    fontWeight: "bold",
   },
 });
 

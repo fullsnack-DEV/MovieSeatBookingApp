@@ -26,7 +26,7 @@ export default function ButtnCom({ onPress, title, price }) {
           <View style={[styles.wrapper, styles.wrapper2]}>
             <Text style={styles.txt}>{title}</Text>
             <Text style={styles.gap}>|</Text>
-            <Text style={styles.pricetag}>{price}</Text>
+            <Text style={styles.pricetag}>{price}$</Text>
           </View>
         </TouchableWithoutFeedback>
       )}
