@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import ButtnCom from "./ButtnCom";
 import Seatsindicator from "./Seatsindicator";
 
 const { width, height } = Dimensions.get("screen");
@@ -168,9 +169,9 @@ export default function MovieSeat() {
             })}
           </View>
         </View>
-        <Text style={{ color: "#fff" }}>{selectedseats.length}</Text>
       </View>
       <Seatsindicator />
+      <ButtnCom title="Buy ticket" price="25$" />
     </>
   );
 }

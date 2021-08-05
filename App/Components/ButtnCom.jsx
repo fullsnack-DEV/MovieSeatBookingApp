@@ -12,13 +12,25 @@ import { FONTSTYLE } from "../Config/FontStyles";
 
 const { width, height } = Dimensions.get("window");
 
-export default function ButtnCom({ onPress, title }) {
+export default function ButtnCom({ onPress, title, price }) {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.wrapper}>
-        <Text style={styles.txt}>{title}</Text>
-      </View>
-    </TouchableWithoutFeedback>
+    <>
+      {!price ? (
+        <TouchableWithoutFeedback onPress={onPress}>
+          <View style={styles.wrapper}>
+            <Text style={styles.txt}>{title}</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      ) : (
+        <TouchableWithoutFeedback onPress={onPress}>
+          <View style={[styles.wrapper, styles.wrapper2]}>
+            <Text style={styles.txt}>{title}</Text>
+            <Text style={styles.gap}>|</Text>
+            <Text style={styles.pricetag}>{price}</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      )}
+    </>
   );
 }
 
@@ -31,9 +43,24 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: height * 0.9,
   },
+  wrapper2: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: width / 1.3,
+  },
   txt: {
     ...FONTSTYLE.callToaction,
     padding: 12,
     textAlign: "center",
+  },
+  gap: {
+    color: "#fff",
+    fontSize: 15,
+  },
+  pricetag: {
+    ...FONTSTYLE.callToaction,
+    fontSize: 15,
+    fontWeight: "bold",
   },
 });

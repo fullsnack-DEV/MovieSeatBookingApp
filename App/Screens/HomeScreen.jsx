@@ -36,7 +36,5 @@ export default function HomeScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  scrolles: {
-    paddingBottom: 20,
-  },
+  scrolles: { flex: 1 },
 });

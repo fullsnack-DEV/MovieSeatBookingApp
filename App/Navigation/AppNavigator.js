@@ -24,15 +24,20 @@ export default function AppNavigator({ route, navigation }) {
     <Navigator
       sceneContainerStyle={{ backgroundColor: "#000" }}
       tabBarOptions={{
-        activeTintColor: "#1DA1F2",
+        activeTintColor: "#42C0FB",
         showLabel: false,
 
         style: {
-          backgroundColor: "#333333",
+          backgroundColor: "#000",
           borderTopWidth: 0,
           position: "absolute",
+          marginHorizontal: 20,
+          borderRadius: 10,
+          height: 45,
+          bottom: 2,
+          alignSelf: "center",
 
-          height: 50,
+          elevation: 0,
         },
       }}
     >
