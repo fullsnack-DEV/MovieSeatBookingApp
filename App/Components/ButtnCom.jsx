@@ -12,12 +12,12 @@ import { FONTSTYLE } from "../Config/FontStyles";
 
 const { width, height } = Dimensions.get("window");
 
-export default function ButtnCom({ onPress, title, price }) {
+export default function ButtnCom({ onPress, title, price, extrastyle }) {
   return (
     <>
       {!price ? (
         <TouchableWithoutFeedback onPress={onPress}>
-          <View style={styles.wrapper}>
+          <View style={[styles.wrapper, extrastyle]}>
             <Text style={styles.txt}>{title}</Text>
           </View>
         </TouchableWithoutFeedback>

@@ -43,7 +43,7 @@ export default function DatesListCom() {
           }}
           bounces={false}
           snapToInterval={ITEM_SIZE}
-          style={{ flexGrow: 0, height: "100%" }}
+          style={{ flexGrow: 0 }}
           decelerationRate="fast"
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: Yscroll } } }],
@@ -94,7 +94,7 @@ export default function DatesListCom() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: height * 0.6,
+    top: height * 0.63,
     position: "absolute",
   },
   container: {
@@ -102,5 +102,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: COLORS.primary,
+    marginTop: 0,
   },
 });

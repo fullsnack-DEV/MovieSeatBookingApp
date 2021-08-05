@@ -1,20 +1,37 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Pressable,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   MaterialCommunityIcons,
   AntDesign,
   MaterialIcons,
+  FontAwesome,
   Foundation,
 } from "@expo/vector-icons";
 
 //FonstStyles
 import { FONTSTYLE } from "../Config/FontStyles";
+import ButtnCom from "./ButtnCom";
 
 //Dimensions
 const { width, height } = Dimensions.get("screen");
 
 export default function Bannerimg({ item }) {
+  //state for the bell color
+
+  const [color, Setcolor] = useState(false);
+
+  const changebellcolor = () => {
+    Setcolor(!color);
+  };
+
   //getImage Method
 
   const getposter = (path) =>
@@ -33,12 +50,7 @@ export default function Bannerimg({ item }) {
         />
         <LinearGradient
           colors={["transparent", "#000"]}
-          style={{
-            width: 800,
-            height: "180%",
-            position: "absolute",
-            bottom: 0,
-          }}
+          style={styles.lineargrad}
         />
       </View>
 
@@ -62,6 +74,19 @@ export default function Bannerimg({ item }) {
             {item.overview}
           </Text>
         </View>
+        <View style={styles.reminder}>
+          <Text style={styles.bell}>Remind Later!</Text>
+          <Pressable onPress={() => changebellcolor()}>
+            <View style={styles.iconview}>
+              <FontAwesome
+                style={{ top: 5 }}
+                name={color ? "bell" : "bell-o"}
+                size={22}
+                color={color ? "red" : "white"}
+              />
+            </View>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -82,7 +107,7 @@ const styles = StyleSheet.create({
     width: width / 1.16,
     position: "absolute",
 
-    top: height * 0.21,
+    top: height * 0.2,
   },
   heading: {
     ...FONTSTYLE.heading2,
@@ -112,6 +137,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     alignSelf: "flex-start",
   },
+  lineargrad: { width: 800, height: "180%", position: "absolute", bottom: 0 },
+
   imdbtext: {
     ...FONTSTYLE.ratings,
     letterSpacing: 0.6,
@@ -121,5 +148,31 @@ const styles = StyleSheet.create({
   },
   para: {
     ...FONTSTYLE.para,
+  },
+  remindbtn: {
+    top: height * 0.55,
+    position: "absolute",
+    backgroundColor: "#fff",
+  },
+  bell: {
+    ...FONTSTYLE.heading3,
+    marginTop: 15,
+    fontSize: 15,
+    color: "red",
+
+    marginRight: 15,
+  },
+  reminder: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  iconview: {
+    backgroundColor: "transparent",
+    height: 40,
+    width: 80,
+    right: 20,
+    top: 10,
+    alignItems: "center",
   },
 });
