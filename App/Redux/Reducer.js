@@ -11,12 +11,12 @@ export const mainreducer = (state = intialState, action) => {
   if (action.type === ADDTOREMIND) {
     return {
       ...state,
-      fav: [
-        ...state.fav,
-        {
-          title: action.payload.item.title,
-        },
-      ],
+      fav: state.fav.concat({
+        title: action.payload.title,
+        img: action.payload.img,
+        id: action.payload.id,
+        imdbrating: action.payload.imdbrating,
+      }),
     };
   } else if (action.type === REMOVEREMIND) {
     return {
@@ -46,5 +46,7 @@ export const mainreducer = (state = intialState, action) => {
         },
       ],
     };
+  } else {
+    return state;
   }
 };

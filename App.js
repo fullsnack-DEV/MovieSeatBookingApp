@@ -5,6 +5,9 @@ import {
 } from "@react-navigation/native";
 //Importing Navigator
 import AppNavigator from "./App/Navigation/AppNavigator";
+//Redux provider
+import { Provider } from "react-redux";
+import Store from "./App/Redux/store";
 import {
   useFonts,
   Nunito_400Regular,
@@ -31,8 +34,10 @@ export default function App({ route, navigation }) {
   }
 
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+    <Provider store={Store}>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }

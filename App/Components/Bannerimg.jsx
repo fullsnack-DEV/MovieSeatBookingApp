@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+//import redux
+import { useDispatch } from "react-redux";
+//importing actioncreatos
+import { addtoremind, removeremind } from "../Redux/Actioncreator";
 import {
   View,
   Text,
@@ -8,13 +12,9 @@ import {
   Pressable,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  MaterialCommunityIcons,
-  AntDesign,
-  MaterialIcons,
-  FontAwesome,
-  Foundation,
-} from "@expo/vector-icons";
+import IMDBcomponent from "./IMDBcomponent";
+import Starcomponent from "./Starcomponent";
+import { FontAwesome } from "@expo/vector-icons";
 
 //FonstStyles
 import { FONTSTYLE } from "../Config/FontStyles";
@@ -24,11 +24,18 @@ import ButtnCom from "./ButtnCom";
 const { width, height } = Dimensions.get("screen");
 
 export default function Bannerimg({ item }) {
+  //Dispatch
+  const dispatch = useDispatch();
   //state for the bell color
 
   const [color, Setcolor] = useState(false);
 
-  const changebellcolor = () => {
+  const changebellcolor = (title, img, id, imdbrating) => {
+    if (!color) {
+      //Ading the dispatcher
+      dispatch(addtoremind(title, img, id, imdbrating));
+    }
+
     Setcolor(!color);
   };
 
@@ -60,13 +67,8 @@ export default function Bannerimg({ item }) {
         </Text>
 
         <View style={styles.rating}>
-          <View style={styles.star}>
-            <AntDesign name="star" size={22} color="yellow" />
-            <Text style={styles.ratetext}>{item.vote_average / 2.0}</Text>
-          </View>
-          <View style={styles.imdb}>
-            <Text style={styles.imdbtext}> IMDB {item.vote_average}</Text>
-          </View>
+          <Starcomponent votes={item.vote_average / 2.0} />
+          <IMDBcomponent imdb={item.vote_average} />
         </View>
         <View style={styles.info}>
           <Text numberOfLines={8} style={styles.para}>
@@ -76,7 +78,16 @@ export default function Bannerimg({ item }) {
         </View>
         <View style={styles.reminder}>
           <Text style={styles.bell}>Remind Later!</Text>
-          <Pressable onPress={() => changebellcolor()}>
+          <Pressable
+            onPress={() =>
+              changebellcolor(
+                item.title,
+                item.backdrop_path,
+                item.id,
+                item.vote_average
+              )
+            }
+          >
             <View style={styles.iconview}>
               <FontAwesome
                 style={{ top: 5 }}
@@ -112,40 +123,15 @@ const styles = StyleSheet.create({
   heading: {
     ...FONTSTYLE.heading2,
   },
-  star: {
-    flexDirection: "row",
-    marginVertical: 12,
-  },
+
   rating: {
     flexDirection: "row",
     alignSelf: "flex-start",
     alignItems: "center",
   },
-  ratetext: {
-    ...FONTSTYLE.ratings,
 
-    color: "yellow",
-
-    marginHorizontal: 10,
-  },
-  imdb: {
-    backgroundColor: "yellow",
-    marginVertical: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 3,
-    borderRadius: 20,
-    marginHorizontal: 10,
-    alignSelf: "flex-start",
-  },
   lineargrad: { width: 800, height: "180%", position: "absolute", bottom: 0 },
 
-  imdbtext: {
-    ...FONTSTYLE.ratings,
-    letterSpacing: 0.6,
-    fontSize: 14,
-
-    color: "#000",
-  },
   para: {
     ...FONTSTYLE.para,
   },
@@ -176,3 +162,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+//add the dispatcher on notify button
