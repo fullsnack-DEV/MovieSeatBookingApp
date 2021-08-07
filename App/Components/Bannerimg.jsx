@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //importing actioncreatos
 import { addtoremind, removeremind } from "../Redux/Actioncreator";
 import {
@@ -26,14 +26,36 @@ const { width, height } = Dimensions.get("screen");
 export default function Bannerimg({ item }) {
   //Dispatch
   const dispatch = useDispatch();
+
+  //selector
+  const fav = useSelector((state) => state.fav);
+
   //state for the bell color
 
   const [color, Setcolor] = useState(false);
+
+  //How to make the notify icon selected even after revisting the particular movie
+  //getting the id of the movie
+
+  //Running the effect
+  useEffect(() => {
+    //we will check if the movie present in a fav state of reducer or not
+    const { id } = item;
+    //for debug
+    console.log(id);
+    const ispresent = fav.some((item) => item.id === id);
+
+    if (ispresent && color === false) {
+      Setcolor(true);
+    }
+  }, [item]);
 
   const changebellcolor = (title, img, id, imdbrating) => {
     if (!color) {
       //Ading the dispatcher
       dispatch(addtoremind(title, img, id, imdbrating));
+    } else {
+      dispatch(removeremind(id));
     }
 
     Setcolor(!color);
