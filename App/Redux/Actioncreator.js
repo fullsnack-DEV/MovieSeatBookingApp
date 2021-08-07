@@ -1,6 +1,12 @@
 //importing Action Types
 
-import { ADDTOREMIND, REMOVEREMIND, GETDATES, GETTICKET } from "./ActionTypes";
+import {
+  ADDTOREMIND,
+  REMOVEREMIND,
+  GETDATES,
+  GETTIME,
+  GETSEAT,
+} from "./ActionTypes";
 
 //Add to Remind
 
@@ -37,14 +43,21 @@ export const getdates = (date, day) => {
   };
 };
 
-//time
-export const getticketdata = (time, seats, price) => {
+export const gettime = (time) => {
   return {
-    type: GETTICKET,
+    type: GETTIME,
     payload: {
       time,
-      seats,
-      price,
+    },
+  };
+};
+
+//seat
+export const getseat = (seat) => {
+  return {
+    type: GETSEAT,
+    payload: {
+      seat,
     },
   };
 };

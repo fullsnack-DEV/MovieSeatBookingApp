@@ -7,6 +7,12 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+
+import { getseat } from "../Redux/Actioncreator";
+//Component import
+
 import { FONTSTYLE } from "../Config/FontStyles";
 import ButtnCom from "./ButtnCom";
 import Seatsindicator from "./Seatsindicator";
@@ -16,11 +22,26 @@ const { width, height } = Dimensions.get("screen");
 export default function MovieSeat() {
   //creating a state array to store the Selected Seats
   //intializing it with some dummy seats
+
   const [selectedseats, Setselectedseats] = useState([]);
 
   const seats = [...Array(52).keys()];
 
   const occupied = [3, 10, 5, 9, 23, 80, 14, 28, 31];
+
+  //Dispatcher Redux
+
+  const dispatch = useDispatch();
+
+  //for debug
+  const data = useSelector((state) => state.seat);
+
+  const getseatandprice = (seat) => {
+    //Dispatcher
+    dispatch(getseat(seat));
+    //debug
+    console.log(data);
+  };
 
   //building the habdker to Set the Selected Seats
   const Selecteseathandle = (seat) => {
@@ -43,6 +64,9 @@ export default function MovieSeat() {
       Setselectedseats([...selectedseats, seat]);
     }
   };
+
+  //seats
+  let seatslength = selectedseats.length;
 
   //pricecalculate
   let price = 0;
@@ -183,7 +207,11 @@ export default function MovieSeat() {
           seats.
         </Text>
       </View>
-      <ButtnCom title="Buy ticket" price={price} />
+      <ButtnCom
+        title="Buy ticket"
+        price={price}
+        onPress={() => getseatandprice(seatslength, price)}
+      />
     </>
   );
 }

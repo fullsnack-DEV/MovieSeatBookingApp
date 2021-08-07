@@ -10,24 +10,22 @@ const getBackdropPath = (path) =>
 
 export default function RemindCard({ title, img, imdbrating }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <View style={styles.imagecontainer}>
-          <Image
-            style={styles.image}
-            source={{ uri: getBackdropPath(img) }}
-            resizeMode="center"
-          />
-        </View>
+    <View style={styles.wrapper}>
+      <View style={styles.imagecontainer}>
+        <Image
+          style={styles.image}
+          source={{ uri: getBackdropPath(img) }}
+          resizeMode="center"
+        />
+      </View>
 
-        <View style={styles.txtcontainer}>
-          <Text numberOfLines={3} style={styles.movietitle}>
-            {title}
-          </Text>
-          <View style={styles.ratingswrapper}>
-            <Starcomponent votes={imdbrating / 2.0} />
-            <IMDBcomponent imdb={imdbrating} />
-          </View>
+      <View style={styles.txtcontainer}>
+        <Text numberOfLines={3} style={styles.movietitle}>
+          {title}
+        </Text>
+        <View style={styles.ratingswrapper}>
+          <Starcomponent votes={imdbrating / 2.0} />
+          <IMDBcomponent imdb={imdbrating} />
         </View>
       </View>
     </View>

@@ -7,6 +7,10 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
+//REdux
+import { useDispatch, useSelector } from "react-redux";
+import { getdates } from "../Redux/Actioncreator";
+//component imports
 import { COLORS } from "../Config/Colorpallet";
 import Dates from "../Data/DatesData";
 import ButtnCom from "./ButtnCom";
@@ -26,6 +30,26 @@ export default function DatesListCom() {
     date: 14,
     day: "Tue",
   });
+
+  //Pulling the data
+  //debug
+
+  const data = useSelector((state) => state.dates);
+
+  //Dispatcher
+  const dispatch = useDispatch();
+
+  const dispatchdates = (item) => {
+    //will take the dates and dispatch
+    dispatch(getdates(item.date, item.day));
+
+    //
+    setSelecteditem(item);
+
+    //debug
+    console.log(data);
+  };
+
   //creating a animatd Refrance
   const Yscroll = useRef(new Animated.Value(0)).current;
   return (
@@ -72,7 +96,7 @@ export default function DatesListCom() {
             return (
               <DatesCom
                 Date={item.date}
-                onPress={() => setSelecteditem(item)}
+                onPress={() => dispatchdates(item)}
                 Day={item.day}
                 opacity={opacity}
                 scale={scale}

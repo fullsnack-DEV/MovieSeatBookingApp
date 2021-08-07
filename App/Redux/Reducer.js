@@ -1,10 +1,17 @@
 //importing ActionTypes
-import { ADDTOREMIND, GETTICKET, GETDATES, REMOVEREMIND } from "./ActionTypes";
+import {
+  ADDTOREMIND,
+  GETDATES,
+  REMOVEREMIND,
+  GETTIME,
+  GETSEAT,
+} from "./ActionTypes";
 
 const intialState = {
   fav: [],
-  dates: [{ date: null, day: null }],
-  ticket: [{ time: null, seats: null, price: null }],
+  dates: [],
+  time: [],
+  seat: [],
 };
 
 export const mainreducer = (state = intialState, action) => {
@@ -27,22 +34,27 @@ export const mainreducer = (state = intialState, action) => {
     return {
       ...state,
       dates: [
-        ...state.dates,
         {
           date: action.payload.date,
           day: action.payload.day,
         },
       ],
     };
-  } else if (action.type === GETTICKET) {
+  } else if (action.type === GETTIME) {
     return {
       ...state,
-      ticket: [
-        ...state.ticket,
+      time: [
         {
           time: action.payload.time,
-          seats: action.payload.seats,
-          price: action.payload.price,
+        },
+      ],
+    };
+  } else if (action.type === GETSEAT) {
+    return {
+      ...state,
+      seat: [
+        {
+          seat: action.payload.seat,
         },
       ],
     };

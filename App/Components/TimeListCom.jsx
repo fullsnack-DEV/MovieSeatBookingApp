@@ -7,6 +7,9 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
+//REdux
+import { useDispatch, useSelector } from "react-redux";
+import { gettime } from "../Redux/Actioncreator";
 
 import Dates from "../Data/DatesData";
 import TimeCom from "./TimeCom";
@@ -24,6 +27,23 @@ export default function TimeListCom() {
     day: "Sat",
     Time: "19:30",
   });
+
+  //for dubg
+  const data = useSelector((state) => state.time);
+
+  //Dispatcher
+  const dispatch = useDispatch();
+
+  const dispatchtime = (item) => {
+    //will take the time and dave it to state object
+
+    dispatch(gettime(item.Time));
+
+    Setselecteditem(item);
+
+    //debug;
+    console.log(data);
+  };
 
   //creating Animated Refrance
 
@@ -74,7 +94,7 @@ export default function TimeListCom() {
               time={item.Time}
               scale={scale}
               opacity={opacity}
-              onPress={() => Setselecteditem(item)}
+              onPress={() => dispatchtime(item)}
               stylebg={{
                 color: selecteditem?.id == item.id ? "#ff726b" : "#fff",
               }}
@@ -87,7 +107,6 @@ export default function TimeListCom() {
 }
 
 const styles = StyleSheet.create({
-  list: {},
   wrapper: {
     top: 45,
     position: "absolute",

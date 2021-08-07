@@ -9,7 +9,6 @@ import { FONTSTYLE } from "../Config/FontStyles";
 export default function FavScreen() {
   //getting the data of Fav  from the Store
   const Fav = useSelector((state) => state.fav);
-  console.log("This is the fav array data", Fav);
 
   return (
     <Screen>
@@ -25,7 +24,6 @@ export default function FavScreen() {
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={{ marginVertical: 15 }}
         renderItem={({ item }) => {
-          console.log("this is the fav item.....", item);
           return (
             <RemindCard
               title={item.title}
