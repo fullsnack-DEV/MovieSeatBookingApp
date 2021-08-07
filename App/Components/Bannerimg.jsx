@@ -42,7 +42,7 @@ export default function Bannerimg({ item }) {
     //we will check if the movie present in a fav state of reducer or not
     const { id } = item;
     //for debug
-    console.log(id);
+    // console.log(id);
     const ispresent = fav.some((item) => item.id === id);
 
     if (ispresent && color === false) {

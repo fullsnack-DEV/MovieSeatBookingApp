@@ -23,12 +23,14 @@ export default function FavScreen() {
         data={Fav}
         showsVerticalScrollIndicator={false}
         keyExtractor={(_, index) => index.toString()}
+        contentContainerStyle={{ marginVertical: 15 }}
         renderItem={({ item }) => {
+          console.log("this is the fav item.....", item);
           return (
             <RemindCard
               title={item.title}
-              img={item.poster_path}
-              imdbrating={item.vote_average}
+              img={item.img}
+              imdbrating={item.imdbrating}
             />
           );
         }}
