@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,12 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+//Bottom Sheet
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+
 //redux
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,10 +22,28 @@ import { getseat } from "../Redux/Actioncreator";
 import { FONTSTYLE } from "../Config/FontStyles";
 import ButtnCom from "./ButtnCom";
 import Seatsindicator from "./Seatsindicator";
+import TicketdisplayCom from "./TicketdisplayCom";
 
 const { width, height } = Dimensions.get("screen");
 
 export default function MovieSeat() {
+  //Ref for the bottom sheet
+
+  const bottomSheetModalRef = useRef(null);
+
+  //var for botton Sheet
+  const snapPoints = useMemo(() => ["25%", "75%"], []);
+
+  //To open the BottomSheet
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  //To habdle the Seat Changes
+  const handleSheetChanges = useCallback((index) => {
+    console.log("handleSheetChanges", index);
+  }, []);
+
   //creating a state array to store the Selected Seats
   //intializing it with some dummy seats
 
@@ -41,8 +65,10 @@ export default function MovieSeat() {
     dispatch(getseat(seat));
     //debug
     console.log(data);
+    handlePresentModalPress();
   };
 
+  const openbottomsheet = () => bottomSheetref.current.open();
   //building the habdker to Set the Selected Seats
   const Selecteseathandle = (seat) => {
     const isSelected = selectedseats.includes(seat);
@@ -74,144 +100,157 @@ export default function MovieSeat() {
 
   return (
     <>
-      <View style={styles.wrapper}>
-        <View>
-          <View style={styles.setswrapper}>
-            {seats.slice(0, 4).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.setswrapper}>
-            {seats.slice(4, 13).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.setswrapper}>
-            {seats.slice(14, 23).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.setswrapper}>
-            {seats.slice(24, 33).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.setswrapper}>
-            {seats.slice(34, 43).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
+      <BottomSheetModalProvider>
+        <View style={styles.wrapper}>
+          <View>
+            <View style={styles.setswrapper}>
+              {seats.slice(0, 4).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
+            <View style={styles.setswrapper}>
+              {seats.slice(4, 13).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
+            <View style={styles.setswrapper}>
+              {seats.slice(14, 23).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
+            <View style={styles.setswrapper}>
+              {seats.slice(24, 33).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
+            <View style={styles.setswrapper}>
+              {seats.slice(34, 43).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
 
-          <View style={styles.setswrapper}>
-            {seats.slice(44, 50).map((seat, index) => {
-              const isselected = selectedseats.includes(seat);
-              const isocupied = occupied.includes(seat);
-              return (
-                <Pressable
-                  onPress={isocupied ? null : () => Selecteseathandle(seat)}
-                  key={`${index}`}
-                >
-                  <View
-                    style={[
-                      styles.seats,
-                      isselected && styles.selected,
-                      isocupied && styles.occupied,
-                    ]}
-                  />
-                </Pressable>
-              );
-            })}
+            <View style={styles.setswrapper}>
+              {seats.slice(44, 50).map((seat, index) => {
+                const isselected = selectedseats.includes(seat);
+                const isocupied = occupied.includes(seat);
+                return (
+                  <Pressable
+                    onPress={isocupied ? null : () => Selecteseathandle(seat)}
+                    key={`${index}`}
+                  >
+                    <View
+                      style={[
+                        styles.seats,
+                        isselected && styles.selected,
+                        isocupied && styles.occupied,
+                      ]}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
         </View>
-      </View>
-      <Seatsindicator />
-      <View style={styles.seattxt}>
-        <Text style={styles.txt}>
-          You have selected{" "}
-          <Text style={styles.txtinside}>{selectedseats.length} </Text>
-          seats.
-        </Text>
-      </View>
-      <ButtnCom
-        title="Buy ticket"
-        price={price}
-        onPress={() => getseatandprice(seatslength, price)}
-      />
+        <Seatsindicator />
+        <View style={styles.seattxt}>
+          <Text style={styles.txt}>
+            You have selected{" "}
+            <Text style={styles.txtinside}>{selectedseats.length} </Text>
+            seats.
+          </Text>
+        </View>
+
+        <ButtnCom
+          title="Buy ticket"
+          price={price}
+          onPress={() => getseatandprice(seatslength, price)}
+        />
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <View style={{ backgroundColor: "#000", flex: 1 }}>
+            <TicketdisplayCom style={styles.ticketstyles} />
+          </View>
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </>
   );
 }
@@ -272,6 +311,9 @@ const styles = StyleSheet.create({
     color: "#DC143C",
     fontSize: 15,
     fontWeight: "bold",
+  },
+  ticketstyles: {
+    marginTop: 15,
   },
 });
 
