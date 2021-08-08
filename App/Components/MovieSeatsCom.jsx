@@ -62,11 +62,13 @@ export default function MovieSeat() {
   const datesdata = useSelector((state) => state.dates);
   const timedata = useSelector((state) => state.time);
 
-  const time = timedata[0];
-
   const date = datesdata[0];
   const seat = seatdata[0];
+  const time = timedata[0];
 
+  console.log(time.time);
+
+  console.log("this is time prop Data", time);
   const getseatandprice = (seat) => {
     //Dispatcher
     dispatch(getseat(seat));

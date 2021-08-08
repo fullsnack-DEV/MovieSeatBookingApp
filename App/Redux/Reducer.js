@@ -10,7 +10,11 @@ import {
 const intialState = {
   fav: [],
   dates: [],
-  time: [],
+  time: [
+    {
+      time: null,
+    },
+  ],
   seat: [],
 };
 

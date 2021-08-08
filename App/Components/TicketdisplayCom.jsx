@@ -5,7 +5,6 @@ import QRCode from "react-native-qrcode-svg";
 import { FONTSTYLE } from "../Config/FontStyles";
 
 export default function TicketdisplayCom({ style, title, Date, Day, Time }) {
-  console.log("Ths is from the modal", title);
   //text for the QR code
 
   const textstring = "https://github.com/fullsnack-DEV";
