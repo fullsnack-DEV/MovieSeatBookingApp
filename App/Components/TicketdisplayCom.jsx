@@ -4,7 +4,8 @@ import { View, Text, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { FONTSTYLE } from "../Config/FontStyles";
 
-export default function TicketdisplayCom({ style }) {
+export default function TicketdisplayCom({ style, title, Date, Day, Time }) {
+  console.log("Ths is from the modal", title);
   //text for the QR code
 
   const textstring = "https://github.com/fullsnack-DEV";
@@ -12,14 +13,14 @@ export default function TicketdisplayCom({ style }) {
   return (
     <View style={[styles.wrapper, style]}>
       <View style={styles.headingwrapper}>
-        <Text style={styles.headingtxt}>Intersetller</Text>
-        <Text style={styles.datetxt}>19 Feb</Text>
+        <Text style={styles.headingtxt}>{title}</Text>
+        <Text style={styles.datetxt}>{Date} Feb</Text>
       </View>
 
       <View style={styles.datewrapper}>
         <Text style={styles.datetxt}>PVR</Text>
-        <Text style={styles.headingtxt}>14 February</Text>
-        <Text style={styles.datetxt}>17:05</Text>
+        <Text style={styles.headingtxt}>{Day}</Text>
+        <Text style={styles.datetxt}>{Time}</Text>
       </View>
       <View style={styles.orderwrapper}>
         <Text style={styles.datetxt}>Ticket number</Text>
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   wrapper: {
     height: 560,
     width: 280,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#d9d9ff",
     alignSelf: "center",
     borderRadius: 30,
     marginTop: 50,

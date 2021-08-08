@@ -13,10 +13,14 @@ export default function DetailScreen({ route, navigation }) {
   //getting the Item
   const { item } = route.params;
 
+  const title = item.title;
+
+  console.log("this is the test title", title);
+
   return (
     <Screen>
       <Bannerimg item={item} />
-      <DatesListCom />
+      <DatesListCom title={title} />
       <ButtnCom
         title="Book Seats!"
         onPress={() => navigation.navigate("Cinema", { name: item.title })}

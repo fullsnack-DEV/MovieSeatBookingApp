@@ -41,7 +41,7 @@ export default function MovieSeat() {
 
   //To habdle the Seat Changes
   const handleSheetChanges = useCallback((index) => {
-    console.log("handleSheetChanges", index);
+    //console.log("handleSheetChanges", index);
   }, []);
 
   //creating a state array to store the Selected Seats
@@ -58,17 +58,24 @@ export default function MovieSeat() {
   const dispatch = useDispatch();
 
   //for debug
-  const data = useSelector((state) => state.seat);
+  const seatdata = useSelector((state) => state.seat);
+  const datesdata = useSelector((state) => state.dates);
+  const timedata = useSelector((state) => state.time);
+
+  const time = timedata[0];
+
+  const date = datesdata[0];
+  const seat = seatdata[0];
 
   const getseatandprice = (seat) => {
     //Dispatcher
     dispatch(getseat(seat));
     //debug
-    console.log(data);
+    console.log("this is time prop Data", time);
+    //console.log(seatdata);
     handlePresentModalPress();
   };
 
-  const openbottomsheet = () => bottomSheetref.current.open();
   //building the habdker to Set the Selected Seats
   const Selecteseathandle = (seat) => {
     const isSelected = selectedseats.includes(seat);
@@ -247,7 +254,13 @@ export default function MovieSeat() {
           onChange={handleSheetChanges}
         >
           <View style={{ backgroundColor: "#000", flex: 1 }}>
-            <TicketdisplayCom style={styles.ticketstyles} />
+            <TicketdisplayCom
+              style={styles.ticketstyles}
+              title={date.title}
+              Date={date.date}
+              Day={date.day}
+              Time={time.time}
+            />
           </View>
         </BottomSheetModal>
       </BottomSheetModalProvider>

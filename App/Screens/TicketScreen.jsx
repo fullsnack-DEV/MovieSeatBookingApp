@@ -4,11 +4,7 @@ import Screen from "../Components/Screen";
 import TicketdisplayCom from "../Components/TicketdisplayCom";
 
 export default function TicketScreen() {
-  return (
-    <Screen style={styles.container}>
-      <TicketdisplayCom />
-    </Screen>
-  );
+  return <Screen style={styles.container}>{/* <TicketdisplayCom /> */}</Screen>;
 }
 
 const styles = StyleSheet.create({

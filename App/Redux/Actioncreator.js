@@ -33,12 +33,13 @@ export const removeremind = (id) => {
 
 //Dates
 
-export const getdates = (date, day) => {
+export const getdates = (date, day, title) => {
   return {
     type: GETDATES,
     payload: {
       date,
       day,
+      title,
     },
   };
 };

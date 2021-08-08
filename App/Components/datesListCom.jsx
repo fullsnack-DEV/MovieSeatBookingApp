@@ -23,7 +23,8 @@ const ITEM_SPACING = (width - ITEM_SIZE) / 2;
 
 //Todo
 //to add the Animation of the Dates
-export default function DatesListCom() {
+export default function DatesListCom({ title }) {
+  //console.log("title from datelist", title);
   //state for the dates data
   const [Selecteditem, setSelecteditem] = useState({
     id: 4,
@@ -39,9 +40,10 @@ export default function DatesListCom() {
   //Dispatcher
   const dispatch = useDispatch();
 
-  const dispatchdates = (item) => {
+  const dispatchdates = (item, title) => {
+    //console.log("title from dispacher", title);
     //will take the dates and dispatch
-    dispatch(getdates(item.date, item.day));
+    dispatch(getdates(item.date, item.day, title));
 
     //
     setSelecteditem(item);
@@ -96,7 +98,7 @@ export default function DatesListCom() {
             return (
               <DatesCom
                 Date={item.date}
-                onPress={() => dispatchdates(item)}
+                onPress={() => dispatchdates(item, title)}
                 Day={item.day}
                 opacity={opacity}
                 scale={scale}

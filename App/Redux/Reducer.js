@@ -37,6 +37,7 @@ export const mainreducer = (state = intialState, action) => {
         {
           date: action.payload.date,
           day: action.payload.day,
+          title: action.payload.title,
         },
       ],
     };
