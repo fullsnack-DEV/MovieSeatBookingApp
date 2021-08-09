@@ -4,7 +4,14 @@ import { View, Text, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { FONTSTYLE } from "../Config/FontStyles";
 
-export default function TicketdisplayCom({ style, title, Date, Day, Time }) {
+export default function TicketdisplayCom({
+  style,
+  title,
+  Date,
+  Day,
+  Time,
+  seats,
+}) {
   //text for the QR code
 
   const textstring = "https://github.com/fullsnack-DEV";
@@ -21,6 +28,7 @@ export default function TicketdisplayCom({ style, title, Date, Day, Time }) {
         <Text style={styles.headingtxt}>{Day}</Text>
         <Text style={styles.datetxt}>{Time}</Text>
       </View>
+      <Text style={styles.seattxt}>No of Seats: {seats}</Text>
       <View style={styles.orderwrapper}>
         <Text style={styles.datetxt}>Ticket number</Text>
         <Text style={styles.ordertxt}>34255774</Text>
@@ -53,6 +61,12 @@ const styles = StyleSheet.create({
     color: "#000",
     textAlign: "center",
     fontSize: 22,
+  },
+  seattxt: {
+    ...FONTSTYLE.heading2,
+    color: "#000",
+    textAlign: "center",
+    fontSize: 15,
   },
   datetxt: {
     ...FONTSTYLE.heading4,

@@ -27,6 +27,10 @@ import TicketdisplayCom from "./TicketdisplayCom";
 const { width, height } = Dimensions.get("screen");
 
 export default function MovieSeat({ title }) {
+  //state for the NotifyMessage
+  //We will set it when there is no time and seat selected
+  const [notify, Setnotify] = useState(false);
+
   //Ref for the bottom sheet
   console.log("Coming from the Seat Screen", title);
 
@@ -67,16 +71,24 @@ export default function MovieSeat({ title }) {
   const seat = seatdata[0];
   const time = timedata[0];
 
-  console.log(time.time);
+  console.log("This is the Seats length", seatdata);
 
-  console.log("this is time prop Data", time);
+  //console.log("this is time prop Data", time);
+
   const getseatandprice = (seat) => {
-    //Dispatcher
-    dispatch(getseat(seat));
-    //debug
-    console.log("this is time prop Data", time);
-    //console.log(seatdata);
-    handlePresentModalPress();
+    //putting the condition if the date , time and seat is not SElecte then notify the user to Select the Date , time and seat and move further
+
+    if (!selectedseats.length) {
+      // console.warn("Please Selec the Seat and Time");
+      Setnotify(true);
+    } else {
+      //Dispatcher
+      dispatch(getseat(seat));
+      //debug
+      //console.log("this is time prop Data", time);
+      //console.log(seatdata);
+      handlePresentModalPress();
+    }
   };
 
   //building the habdker to Set the Selected Seats
@@ -243,12 +255,17 @@ export default function MovieSeat({ title }) {
             <Text style={styles.txtinside}>{selectedseats.length} </Text>
             seats.
           </Text>
+          {notify ? (
+            <Text style={styles.txtnotify}>
+              Please Select the Time and Seat 😄
+            </Text>
+          ) : null}
         </View>
 
         <ButtnCom
           title="Buy ticket"
           price={price}
-          onPress={() => getseatandprice(seatslength, price)}
+          onPress={() => getseatandprice(seatslength)}
         />
         <BottomSheetModal
           ref={bottomSheetModalRef}
@@ -264,6 +281,7 @@ export default function MovieSeat({ title }) {
               Date={date.date}
               Day={date.day}
               Time={time.time}
+              seats={seatdata.length}
             />
           </View>
         </BottomSheetModal>
@@ -323,6 +341,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     ...FONTSTYLE.heading4,
     fontSize: 13,
+  },
+  txtnotify: {
+    textAlign: "center",
+    color: "#fff",
+    ...FONTSTYLE.heading4,
+    fontSize: 10,
+    marginTop: 25,
   },
   txtinside: {
     color: "#DC143C",
