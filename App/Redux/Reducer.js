@@ -9,7 +9,12 @@ import {
 
 const intialState = {
   fav: [],
-  dates: [],
+  dates: [
+    {
+      date: 20,
+      day: "Thu",
+    },
+  ],
   time: [
     {
       time: null,

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StatusBar } from "react-native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+//redux
+import { useSelector } from "react-redux";
 import Bannerimg from "../Components/Bannerimg";
 import DatesCom from "../Components/DatesCom";
 import DatesListCom from "../Components/datesListCom";
@@ -8,6 +9,16 @@ import Screen from "../Components/Screen";
 import ButtnCom from "../Components/ButtnCom";
 
 export default function DetailScreen({ route, navigation }) {
+  //state for the reminder
+
+  //useSelector
+
+  //to handle the null inputs
+
+  const navigatefunc = () => {
+    navigation.navigate("Cinema", { name: item.title });
+  };
+
   //hiding the Tab bar on the Detail Screen
 
   //getting the Item
@@ -20,11 +31,9 @@ export default function DetailScreen({ route, navigation }) {
   return (
     <Screen>
       <Bannerimg item={item} />
-      <DatesListCom title={title} />
-      <ButtnCom
-        title="Book Seats!"
-        onPress={() => navigation.navigate("Cinema", { name: item.title })}
-      />
+      <DatesListCom />
+
+      <ButtnCom title="Book Seats!" onPress={() => navigatefunc()} />
     </Screen>
   );
 }

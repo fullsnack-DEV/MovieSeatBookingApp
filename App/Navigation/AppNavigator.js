@@ -72,15 +72,6 @@ export default function AppNavigator({ route, navigation }) {
           ),
         }}
       />
-      <Screen
-        name="Profile"
-        component={ProfileNavigator}
-        options={{
-          tabBarIcon: ({ size, color }) => (
-            <AntDesign name="user" size={size * 1.1} color={color} />
-          ),
-        }}
-      />
     </Navigator>
   );
 }

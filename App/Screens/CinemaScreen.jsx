@@ -21,7 +21,7 @@ export default function CinemaScreen({ route }) {
         </Text>
       </View>
       <ScreenCom />
-      <MovieSeat />
+      <MovieSeat title={name} />
     </Screen>
   );
 }

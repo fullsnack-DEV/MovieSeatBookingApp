@@ -26,8 +26,9 @@ import TicketdisplayCom from "./TicketdisplayCom";
 
 const { width, height } = Dimensions.get("screen");
 
-export default function MovieSeat() {
+export default function MovieSeat({ title }) {
   //Ref for the bottom sheet
+  console.log("Coming from the Seat Screen", title);
 
   const bottomSheetModalRef = useRef(null);
 
@@ -254,11 +255,12 @@ export default function MovieSeat() {
           index={1}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
+          style={{ zindex: 1000 }}
         >
           <View style={{ backgroundColor: "#000", flex: 1 }}>
             <TicketdisplayCom
               style={styles.ticketstyles}
-              title={date.title}
+              title={title}
               Date={date.date}
               Day={date.day}
               Time={time.time}
