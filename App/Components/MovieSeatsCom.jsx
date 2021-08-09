@@ -281,7 +281,7 @@ export default function MovieSeat({ title }) {
               Date={date.date}
               Day={date.day}
               Time={time.time}
-              seats={seatdata.length}
+              seats={selectedseats.length}
             />
           </View>
         </BottomSheetModal>
