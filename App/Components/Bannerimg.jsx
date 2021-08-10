@@ -50,10 +50,11 @@ export default function Bannerimg({ item }) {
     }
   }, [item]);
 
-  const changebellcolor = (title, img, id, imdbrating) => {
+  const changebellcolor = (title, img, id, imdbrating, information) => {
     if (!color) {
+      // console.log(information);
       //Ading the dispatcher
-      dispatch(addtoremind(title, img, id, imdbrating));
+      dispatch(addtoremind(title, img, id, imdbrating, information));
     } else {
       dispatch(removeremind(id));
     }
@@ -106,7 +107,8 @@ export default function Bannerimg({ item }) {
                 item.title,
                 item.backdrop_path,
                 item.id,
-                item.vote_average
+                item.vote_average,
+                item.overview
               )
             }
           >

@@ -9,10 +9,17 @@ import {
 } from "react-native";
 
 import { FONTSTYLE } from "../Config/FontStyles";
+import AnimatedLoader from "./AnimatedLoader";
 
 const { width, height } = Dimensions.get("window");
 
-export default function ButtnCom({ onPress, title, price, extrastyle }) {
+export default function ButtnCom({
+  onPress,
+  title,
+  price,
+  extrastyle,
+  Loading,
+}) {
   return (
     <>
       {!price ? (
@@ -22,13 +29,19 @@ export default function ButtnCom({ onPress, title, price, extrastyle }) {
           </View>
         </TouchableWithoutFeedback>
       ) : (
-        <TouchableWithoutFeedback onPress={onPress}>
-          <View style={[styles.wrapper, styles.wrapper2]}>
-            <Text style={styles.txt}>{title}</Text>
-            <Text style={styles.gap}>|</Text>
-            <Text style={styles.pricetag}>{price}$</Text>
-          </View>
-        </TouchableWithoutFeedback>
+        <>
+          <TouchableWithoutFeedback onPress={onPress}>
+            {Loading ? (
+              <AnimatedLoader />
+            ) : (
+              <View style={[styles.wrapper, styles.wrapper2]}>
+                <Text style={styles.txt}>{title}</Text>
+                <Text style={styles.gap}>|</Text>
+                <Text style={styles.pricetag}>{price}$</Text>
+              </View>
+            )}
+          </TouchableWithoutFeedback>
+        </>
       )}
     </>
   );

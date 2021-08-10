@@ -1,4 +1,10 @@
-import React, { useState, useRef, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useEffect,
+} from "react";
 import {
   View,
   Text,
@@ -27,12 +33,15 @@ import TicketdisplayCom from "./TicketdisplayCom";
 const { width, height } = Dimensions.get("screen");
 
 export default function MovieSeat({ title }) {
+  //state to mimic the Loading behaviour
+  const [Loading, SetLoading] = useState(null);
+
   //state for the NotifyMessage
   //We will set it when there is no time and seat selected
   const [notify, Setnotify] = useState(false);
 
   //Ref for the bottom sheet
-  console.log("Coming from the Seat Screen", title);
+  // console.log("Coming from the Seat Screen", title);
 
   const bottomSheetModalRef = useRef(null);
 
@@ -71,24 +80,31 @@ export default function MovieSeat({ title }) {
   const seat = seatdata[0];
   const time = timedata[0];
 
-  console.log("This is the Seats length", seatdata);
+  // console.log("This is the Seats length", seatdata);
 
   //console.log("this is time prop Data", time);
 
-  const getseatandprice = (seat) => {
+  const getseatandprice = (seat, title) => {
     //putting the condition if the date , time and seat is not SElecte then notify the user to Select the Date , time and seat and move further
 
     if (!selectedseats.length) {
       // console.warn("Please Selec the Seat and Time");
       Setnotify(true);
     } else {
+      //Seting the Loadig true
+
+      console.log("This is the Loading State for btn", Loading);
+
+      console.log("dispather", title);
       //Dispatcher
-      dispatch(getseat(seat));
+      dispatch(getseat(seat, title));
       //debug
       //console.log("this is time prop Data", time);
       //console.log(seatdata);
       handlePresentModalPress();
     }
+
+    console.log("This is the Loading State for btn", Loading);
   };
 
   //building the habdker to Set the Selected Seats
@@ -265,7 +281,7 @@ export default function MovieSeat({ title }) {
         <ButtnCom
           title="Buy ticket"
           price={price}
-          onPress={() => getseatandprice(seatslength)}
+          onPress={() => getseatandprice(seatslength, title)}
         />
         <BottomSheetModal
           ref={bottomSheetModalRef}

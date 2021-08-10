@@ -8,17 +8,8 @@ import Header from "../Components/Header";
 import AnimatedMovieList from "../Components/AnimatedMovielist";
 import Screen from "../Components/Screen";
 import MovieList from "../Components/MovieList";
-import useApi from "../Hooks/useApi";
 
 export default function HomeScreen({ route, navigation }) {
-  // const routename = getFocusedRouteNameFromRoute(route) ?? "Detail";
-
-  // useEffect(() => {
-  //   //Setting the options on a NAvigation
-  //   navigation.setOptions({
-  //     tabBarVisible: ["Home"].includes(routename),
-  //   });
-  // }, []);
   return (
     <Screen>
       <ScrollView style={styles.scrolles}>
@@ -28,8 +19,16 @@ export default function HomeScreen({ route, navigation }) {
           endpoint={getmovies}
           navigation={navigation}
         />
-        <MovieList title="Now Playing" endpoint={getnowplaying} />
-        <MovieList title="Upcoming Movies" endpoint={getupcoming} />
+        <MovieList
+          title="Now Playing"
+          endpoint={getnowplaying}
+          navigation={navigation}
+        />
+        <MovieList
+          title="Upcoming Movies"
+          endpoint={getupcoming}
+          navigation={navigation}
+        />
       </ScrollView>
     </Screen>
   );

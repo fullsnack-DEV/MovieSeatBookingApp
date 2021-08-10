@@ -18,9 +18,15 @@ const intialState = {
   time: [
     {
       time: null,
+      title: null,
     },
   ],
-  seat: [],
+  seat: [
+    {
+      seat: null,
+      title: null,
+    },
+  ],
 };
 
 export const mainreducer = (state = intialState, action) => {
@@ -32,6 +38,7 @@ export const mainreducer = (state = intialState, action) => {
         img: action.payload.img,
         id: action.payload.id,
         imdbrating: action.payload.imdbrating,
+        information: action.payload.information,
       }),
     };
   } else if (action.type === REMOVEREMIND) {
@@ -65,6 +72,7 @@ export const mainreducer = (state = intialState, action) => {
       seat: [
         {
           seat: action.payload.seat,
+          title: action.payload.title,
         },
       ],
     };

@@ -29,6 +29,7 @@ export default function FavScreen() {
               title={item.title}
               img={item.img}
               imdbrating={item.imdbrating}
+              information={item.information}
             />
           );
         }}

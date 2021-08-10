@@ -3,13 +3,14 @@ import { View, Text, FlatList, StyleSheet, Dimensions } from "react-native";
 import MovieCom from "./MovieCom";
 import useApi from "../Hooks/useApi";
 import HeadingCom from "./HeadingCom";
+import AnimatedLoader from "./AnimatedLoader";
 
 const { width, height } = Dimensions.get("screen");
 const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
-export default function MovieList({ endpoint, title }) {
-  const { data: Movies, Loding, Error } = useApi(endpoint);
+export default function MovieList({ endpoint, title, navigation }) {
+  const { data: Movies, Loading, Error } = useApi(endpoint);
 
   const movies = Movies.splice(0, 10);
 
@@ -32,7 +33,16 @@ export default function MovieList({ endpoint, title }) {
             return <View style={{ width: SPACER_ITEM_SIZE }} />;
           }
 
-          return <MovieCom img={item.poster_path} />;
+          return (
+            <MovieCom
+              img={item.poster_path}
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  item,
+                })
+              }
+            />
+          );
         }}
       />
     </View>

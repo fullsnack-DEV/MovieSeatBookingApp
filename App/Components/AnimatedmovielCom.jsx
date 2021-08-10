@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import Svg, { Text as BoldText } from "react-native-svg";
+import AnimatedLoader from "./AnimatedLoader";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -19,6 +20,7 @@ export default function Animatedmovielist({
   translateX,
   index,
   onPress,
+  Loading,
 }) {
   const getposter = (path) =>
     `https://image.tmdb.org/t/p/w440_and_h660_face${path}`;

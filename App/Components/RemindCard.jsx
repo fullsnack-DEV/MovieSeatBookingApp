@@ -8,7 +8,7 @@ import Starcomponent from "./Starcomponent";
 const getBackdropPath = (path) =>
   `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${path}`;
 
-export default function RemindCard({ title, img, imdbrating }) {
+export default function RemindCard({ title, img, imdbrating, information }) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.imagecontainer}>
@@ -20,9 +20,14 @@ export default function RemindCard({ title, img, imdbrating }) {
       </View>
 
       <View style={styles.txtcontainer}>
-        <Text numberOfLines={3} style={styles.movietitle}>
+        <Text numberOfLines={1} style={styles.movietitle}>
           {title}
         </Text>
+        <View style={styles.info}>
+          <Text numberOfLines={4} style={styles.info}>
+            {information}
+          </Text>
+        </View>
         <View style={styles.ratingswrapper}>
           <Starcomponent votes={imdbrating / 2.0} />
           <IMDBcomponent imdb={imdbrating} />
@@ -48,15 +53,13 @@ const styles = StyleSheet.create({
   },
   txtcontainer: {
     padding: 25,
-
-    width: 200,
+    justifyContent: "center",
+    width: 220,
     paddingHorizontal: 10,
   },
   ratingswrapper: {
     justifyContent: "space-between",
     flexDirection: "row",
-
-    marginVertical: 20,
   },
   image: {
     width: 120,
@@ -69,5 +72,9 @@ const styles = StyleSheet.create({
   movietitle: {
     ...FONTSTYLE.heading3,
     fontSize: 20,
+  },
+  info: {
+    ...FONTSTYLE.heading4,
+    marginVertical: 4,
   },
 });

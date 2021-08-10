@@ -18,6 +18,7 @@ const { width, height } = Dimensions.get("screen");
 
 //Custom Hooks
 import useApi from "../Hooks/useApi";
+import AnimatedLoader from "./AnimatedLoader";
 
 //Width and Sizes
 const ITEM_SIZE = width * 0.65;
@@ -33,7 +34,7 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
   const Xsscroll = useRef(new Animated.Value(0)).current;
 
   // API Hooks
-  const { data: Movies, Loding, Error } = useApi(endpoint);
+  const { data: Movies, Loading, Error } = useApi(endpoint);
 
   //State for Movies
   const [newData, SetnewData] = useState([...Movies]);
@@ -90,60 +91,66 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
           }}
         />
       </View>
-      <View style={styles.movielist}>
-        <Animated.FlatList
-          style={styles.flatlist}
-          ref={flatList}
-          initialNumToRender={10}
-          windowSize={50}
-          maxToRenderPerBatch={5}
-          updateCellsBatchingPeriod={30}
-          onEndReachedThreshold={0.1}
-          keyExtractor={(_, index) => index.toString()}
-          extraData={Selected}
-          data={newData}
-          onContentSizeChange={() => flatref()}
-          snapToInterval={ITEM_SIZE}
-          scrollEventThrottle={16}
-          decelerationRate={"fast"}
-          removeClippedSubviews={true}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: Xsscroll } } }],
-            { useNativeDriver: true }
-          )}
-          renderItem={({ item, index }) => {
-            if (!item.poster_path) {
-              return <View style={{ width: SPACER_ITEM_SIZE }} />;
-            }
 
-            const inputRange = [
-              (index - 2) * ITEM_SIZE,
-              (index - 1) * ITEM_SIZE,
-              index * ITEM_SIZE,
-            ];
-            const outputRange = ["8deg", "0deg", "-8deg"];
-            const translateX = Xsscroll.interpolate({
-              inputRange,
-              outputRange,
-            });
+      {Loading ? (
+        <AnimatedLoader />
+      ) : (
+        <View style={styles.movielist}>
+          <Animated.FlatList
+            style={styles.flatlist}
+            ref={flatList}
+            initialNumToRender={10}
+            windowSize={50}
+            maxToRenderPerBatch={5}
+            updateCellsBatchingPeriod={30}
+            onEndReachedThreshold={0.1}
+            keyExtractor={(_, index) => index.toString()}
+            extraData={Selected}
+            data={newData}
+            onContentSizeChange={() => flatref()}
+            snapToInterval={ITEM_SIZE}
+            scrollEventThrottle={16}
+            decelerationRate={"fast"}
+            removeClippedSubviews={true}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            onScroll={Animated.event(
+              [{ nativeEvent: { contentOffset: { x: Xsscroll } } }],
+              { useNativeDriver: true }
+            )}
+            renderItem={({ item, index }) => {
+              if (!item.poster_path) {
+                return <View style={{ width: SPACER_ITEM_SIZE }} />;
+              }
 
-            return (
-              <Animatedmovielist
-                item={item}
-                translateX={translateX}
-                index={index}
-                onPress={() =>
-                  navigation.navigate("Detail", {
-                    item,
-                  })
-                }
-              />
-            );
-          }}
-        />
-      </View>
+              const inputRange = [
+                (index - 2) * ITEM_SIZE,
+                (index - 1) * ITEM_SIZE,
+                index * ITEM_SIZE,
+              ];
+              const outputRange = ["8deg", "0deg", "-8deg"];
+              const translateX = Xsscroll.interpolate({
+                inputRange,
+                outputRange,
+              });
+
+              return (
+                <Animatedmovielist
+                  item={item}
+                  translateX={translateX}
+                  index={index}
+                  Loading={Loading}
+                  onPress={() =>
+                    navigation.navigate("Detail", {
+                      item,
+                    })
+                  }
+                />
+              );
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 }
@@ -166,6 +173,3 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
 });
-
-//Todo
-//Cutomize the Tab bar. Make  it round and Sticky

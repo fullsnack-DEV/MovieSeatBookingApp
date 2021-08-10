@@ -8,7 +8,7 @@ const getposter = (path) =>
 
 export default function MovieCom({ img, onPress }) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image style={styles.img} source={{ uri: getposter(img) }} />
     </TouchableOpacity>
   );

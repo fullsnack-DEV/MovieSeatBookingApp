@@ -10,7 +10,7 @@ import {
 
 //Add to Remind
 
-export const addtoremind = (title, img, id, imdbrating) => {
+export const addtoremind = (title, img, id, imdbrating, information) => {
   return {
     type: ADDTOREMIND,
     payload: {
@@ -18,6 +18,7 @@ export const addtoremind = (title, img, id, imdbrating) => {
       img: img,
       id: id,
       imdbrating: imdbrating,
+      information: information,
     },
   };
 };
@@ -39,12 +40,11 @@ export const getdates = (date, day, title) => {
     payload: {
       date,
       day,
-      title,
     },
   };
 };
 
-export const gettime = (time) => {
+export const gettime = (time, title) => {
   return {
     type: GETTIME,
     payload: {
@@ -54,11 +54,12 @@ export const gettime = (time) => {
 };
 
 //seat
-export const getseat = (seat) => {
+export const getseat = (seat, title) => {
   return {
     type: GETSEAT,
     payload: {
       seat,
+      title,
     },
   };
 };
