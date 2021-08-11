@@ -23,8 +23,6 @@
  Uses Redux for the State Management
 
  ## APP DEMO VIDEO 
- https://dribbble.com/shots/15258922-Cinema-App-P2
-
-https://user-images.githubusercontent.com/56273302/107976934-57b88500-6fe0-11eb-806e-dc854d0e21ee.mp4
+ http://imgur.com/gallery/8tEs2ka
 
 ## APP IMAGES
