@@ -34,7 +34,6 @@ const { width, height } = Dimensions.get("screen");
 
 export default function MovieSeat({ title }) {
   //state to mimic the Loading behaviour
-  const [Loading, SetLoading] = useState(null);
 
   //state for the NotifyMessage
   //We will set it when there is no time and seat selected
@@ -93,9 +92,7 @@ export default function MovieSeat({ title }) {
     } else {
       //Seting the Loadig true
 
-      console.log("This is the Loading State for btn", Loading);
-
-      console.log("dispather", title);
+      // console.log("dispather", title);
       //Dispatcher
       dispatch(getseat(seat, title));
       //debug
@@ -104,7 +101,7 @@ export default function MovieSeat({ title }) {
       handlePresentModalPress();
     }
 
-    console.log("This is the Loading State for btn", Loading);
+    // console.log("This is the Loading State for btn", Loading);
   };
 
   //building the habdker to Set the Selected Seats
