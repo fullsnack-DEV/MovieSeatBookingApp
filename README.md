@@ -23,6 +23,6 @@
  Uses Redux for the State Management
 
  ## APP DEMO VIDEO 
- http://imgur.com/gallery/8tEs2ka
+https://user-images.githubusercontent.com/56273302/128978447-23683f15-01ad-463c-860c-2b9bdca7f184.mp4
 
 ## APP IMAGES
