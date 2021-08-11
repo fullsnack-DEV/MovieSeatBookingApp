@@ -5,11 +5,11 @@
  Dribble post Link : https://dribbble.com/shots/15258922-Cinema-App-P2
  
  
- Applicattion is build using Expo
+ Application is build using Expo
 
  In the Project I Have Fetched the IMDB API  to display the Movies.
 
- Festures: 
+ Features: 
  
  1 > Filter the movies on the basis of genres.
  
@@ -26,8 +26,7 @@
 https://user-images.githubusercontent.com/56273302/128978447-23683f15-01ad-463c-860c-2b9bdca7f184.mp4
 
 ## APP IMAGES
-<img src="https://user-images.githubusercontent.com/56273302/128982270-2e8e2d4d-4e98-4e22-b867-bd0f1d5345d1.png" alt="alt text" width="250" height="420"  >
-<img src="https://user-images.githubusercontent.com/56273302/128982478-ca92edcd-b8fa-40d2-91ce-595113bfc2f8.png" alt="alt text" width="250" height="420"  >
+<img src="https://user-images.githubusercontent.com/56273302/128982270-2e8e2d4d-4e98-4e22-b867-bd0f1d5345d1.png" alt="alt text" width="250" height="420"  >  <img src="https://user-images.githubusercontent.com/56273302/128982478-ca92edcd-b8fa-40d2-91ce-595113bfc2f8.png" alt="alt text" width="250" height="420"  >
 <img src="https://user-images.githubusercontent.com/56273302/128982550-5645bf33-ef98-4aeb-803e-59dce9a71852.png" alt="alt text" width="250" height="420"  >
 <img src="https://user-images.githubusercontent.com/56273302/128982668-3f204a2a-36a9-4888-951e-24311d585afe.png" alt="alt text" width="250" height="420"  >
 <img src="https://user-images.githubusercontent.com/56273302/128982693-d3bc0f6f-2afb-4b41-8d0c-50e973d4a895.png" alt="alt text" width="250" height="420"  >
