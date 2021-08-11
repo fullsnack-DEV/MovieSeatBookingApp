@@ -8,8 +8,6 @@ import Store from "./App/Redux/store";
 import {
   useFonts,
   Nunito_400Regular,
-  Nunito_600SemiBold_Italic,
-  Nunito_600SemiBold,
   Nunito_800ExtraBold_Italic,
   Nunito_700Bold,
   Nunito_800ExtraBold,
