@@ -7,7 +7,7 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import { getmovies } from "../api/Endpoints";
+
 import { Categories } from "../Data/Categories";
 //Component Import
 import HeadingCom from "./HeadingCom";
@@ -41,7 +41,6 @@ export default function AnimatedMovieList({ endpoint, title, navigation }) {
 
   useEffect(() => {
     SetnewData([{ key: "left-s" }, ...Movies, { key: "right-s" }]);
-    console.log("REnders");
   }, [Movies]);
 
   //Ref

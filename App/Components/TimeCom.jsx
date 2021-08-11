@@ -1,15 +1,12 @@
 import React from "react";
 import {
-  View,
   Text,
   StyleSheet,
   Animated,
   Dimensions,
-  TouchableOpacity,
   Pressable,
 } from "react-native";
 import { COLORS } from "../Config/Colorpallet";
-import { FONTSTYLE } from "../Config/FontStyles";
 
 const { width, height } = Dimensions.get("window");
 const ITEM_SIZE = width * 0.25;

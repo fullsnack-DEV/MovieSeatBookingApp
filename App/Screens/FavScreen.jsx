@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeremind } from "../Redux/Actioncreator";
+import Deleteitemcom from "../Components/Deleteitemcom";
 import RemindCard from "../Components/RemindCard";
 import Screen from "../Components/Screen";
 import { FONTSTYLE } from "../Config/FontStyles";
@@ -9,6 +11,8 @@ import { FONTSTYLE } from "../Config/FontStyles";
 export default function FavScreen() {
   //getting the data of Fav  from the Store
   const Fav = useSelector((state) => state.fav);
+
+  const dispatch = useDispatch();
 
   return (
     <Screen>
@@ -30,6 +34,11 @@ export default function FavScreen() {
               img={item.img}
               imdbrating={item.imdbrating}
               information={item.information}
+              renderRightActions={() => (
+                <Deleteitemcom
+                  onPress={() => dispatch(removeremind(item.id))}
+                />
+              )}
             />
           );
         }}

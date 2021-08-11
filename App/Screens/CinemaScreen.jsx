@@ -8,8 +8,6 @@ import { FONTSTYLE } from "../Config/FontStyles";
 const { width, height } = Dimensions.get("window");
 
 export default function CinemaScreen({ route }) {
-  const [Selectedseats, SetSelectedseats] = useState([]);
-
   //getting the data via routes
   const { name } = route.params;
 

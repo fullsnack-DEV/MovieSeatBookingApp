@@ -19,7 +19,9 @@ export default function TicketdisplayCom({
   return (
     <View style={[styles.wrapper, style]}>
       <View style={styles.headingwrapper}>
-        <Text style={styles.headingtxt}>{title}</Text>
+        <Text style={styles.headingtxt} numberOfLines={1}>
+          {title}
+        </Text>
         <Text style={styles.datetxt}>{Date} Feb</Text>
       </View>
 
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
   },
   headingwrapper: {
     marginTop: 40,
+    paddingHorizontal: 10,
   },
   datewrapper: {
     marginTop: 25,

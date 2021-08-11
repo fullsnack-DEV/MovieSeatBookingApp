@@ -18,12 +18,12 @@ export default function TicketScreen() {
   const time = timedata[0];
   return (
     <Screen style={styles.container}>
-      {seatdata[0] ? (
+      {seat.seat === null ? (
         <Text style={styles.ticketxt}>No Ticket</Text>
       ) : (
         <Text style={styles.ticketxt}> Your Tickets</Text>
       )}
-      {seatdata[0] ? null : (
+      {seat.seat === null ? null : (
         <TicketdisplayCom
           title={seat.title}
           Date={date.date}

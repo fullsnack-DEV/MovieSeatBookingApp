@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { StyleSheet, ScrollView } from "react-native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { AppLoading } from "expo";
+
 import { getmovies, getnowplaying, getupcoming } from "../api/Endpoints";
 import Header from "../Components/Header";
 
@@ -28,6 +27,12 @@ export default function HomeScreen({ route, navigation }) {
           title="Upcoming Movies"
           endpoint={getupcoming}
           navigation={navigation}
+        />
+        <MovieList
+          title="Upcoming Movies"
+          endpoint={getupcoming}
+          navigation={navigation}
+          reverse={true}
         />
       </ScrollView>
     </Screen>

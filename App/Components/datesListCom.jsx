@@ -50,7 +50,6 @@ export default function DatesListCom() {
     setSelecteditem(item);
 
     //debug
-    console.log("This is coming from the details Dates", data);
   };
 
   //creating a animatd Refrance

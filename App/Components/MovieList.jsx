@@ -9,10 +9,14 @@ const { width, height } = Dimensions.get("screen");
 const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
-export default function MovieList({ endpoint, title, navigation }) {
-  const { data: Movies, Loading, Error } = useApi(endpoint);
+export default function MovieList({ endpoint, title, navigation, reverse }) {
+  const { data: Movies, Error } = useApi(endpoint);
 
-  const movies = Movies.splice(0, 10);
+  let movies = Movies.splice(0, 10);
+
+  {
+    reverse ? movies.reverse() : null;
+  }
 
   const Moviesdata = [{ key: "left-s" }, ...movies, { key: "right-s" }];
 

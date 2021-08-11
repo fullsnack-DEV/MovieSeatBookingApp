@@ -1,7 +1,6 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   View,
-  Text,
   Dimensions,
   TouchableWithoutFeedback,
   Animated,
@@ -9,7 +8,6 @@ import {
 } from "react-native";
 
 import Svg, { Text as BoldText } from "react-native-svg";
-import AnimatedLoader from "./AnimatedLoader";
 
 const { width, height } = Dimensions.get("screen");
 

@@ -26,8 +26,6 @@ export default function DetailScreen({ route, navigation }) {
 
   const title = item.title;
 
-  console.log("this is the test title", title);
-
   return (
     <Screen>
       <Bannerimg item={item} />

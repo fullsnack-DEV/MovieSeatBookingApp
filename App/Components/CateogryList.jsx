@@ -6,14 +6,12 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import { COLORS } from "../Config/Colorpallet";
+
 import { FONTSTYLE } from "../Config/FontStyles";
 
 const { width, height } = Dimensions.get("screen");
 
 const ITEM_SIZE = width * 0.72;
-
-console.log(ITEM_SIZE);
 
 export default function CateogryList({ onPress, icon, title, stylebg }) {
   return (

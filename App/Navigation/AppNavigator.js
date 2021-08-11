@@ -2,19 +2,14 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //Importing Icons
-import {
-  MaterialCommunityIcons,
-  AntDesign,
-  MaterialIcons,
-  Foundation,
-} from "@expo/vector-icons";
+import { AntDesign, MaterialIcons, Foundation } from "@expo/vector-icons";
 
 //importing Navigators
 import HomeNavigator from "./HomeNavigator";
 import FavNavigator from "./FavNavigator";
 import ProfileNavigator from "./ProfileNavigator";
 import TicketNavigator from "./TicketNavigator";
-import { color } from "react-native-reanimated";
+
 //Creating Tabs
 
 const { Navigator, Screen } = createBottomTabNavigator();

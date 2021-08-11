@@ -3,37 +3,46 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { FONTSTYLE } from "../Config/FontStyles";
 import IMDBcomponent from "./IMDBcomponent";
 import Starcomponent from "./Starcomponent";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 //getting the image
 const getBackdropPath = (path) =>
   `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${path}`;
 
-export default function RemindCard({ title, img, imdbrating, information }) {
+export default function RemindCard({
+  title,
+  img,
+  imdbrating,
+  information,
+  renderRightActions,
+}) {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.imagecontainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: getBackdropPath(img) }}
-          resizeMode="center"
-        />
-      </View>
+    <Swipeable renderRightActions={renderRightActions}>
+      <View style={styles.wrapper}>
+        <View style={styles.imagecontainer}>
+          <Image
+            style={styles.image}
+            source={{ uri: getBackdropPath(img) }}
+            resizeMode="center"
+          />
+        </View>
 
-      <View style={styles.txtcontainer}>
-        <Text numberOfLines={1} style={styles.movietitle}>
-          {title}
-        </Text>
-        <View style={styles.info}>
-          <Text numberOfLines={4} style={styles.info}>
-            {information}
+        <View style={styles.txtcontainer}>
+          <Text numberOfLines={1} style={styles.movietitle}>
+            {title}
           </Text>
-        </View>
-        <View style={styles.ratingswrapper}>
-          <Starcomponent votes={imdbrating / 2.0} />
-          <IMDBcomponent imdb={imdbrating} />
+          <View style={styles.info}>
+            <Text numberOfLines={4} style={styles.info}>
+              {information}
+            </Text>
+          </View>
+          <View style={styles.ratingswrapper}>
+            <Starcomponent votes={imdbrating / 2.0} />
+            <IMDBcomponent imdb={imdbrating} />
+          </View>
         </View>
       </View>
-    </View>
+    </Swipeable>
   );
 }
 
@@ -50,9 +59,9 @@ const styles = StyleSheet.create({
     width: 350,
     backgroundColor: "#181818",
     alignSelf: "center",
+    padding: 10,
   },
   txtcontainer: {
-    padding: 25,
     justifyContent: "center",
     width: 220,
     paddingHorizontal: 10,
@@ -71,10 +80,11 @@ const styles = StyleSheet.create({
   },
   movietitle: {
     ...FONTSTYLE.heading3,
-    fontSize: 20,
+    fontSize: 15,
   },
   info: {
     ...FONTSTYLE.heading4,
     marginVertical: 4,
+    fontSize: 11,
   },
 });

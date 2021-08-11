@@ -18,7 +18,6 @@ import { FontAwesome } from "@expo/vector-icons";
 
 //FonstStyles
 import { FONTSTYLE } from "../Config/FontStyles";
-import ButtnCom from "./ButtnCom";
 
 //Dimensions
 const { width, height } = Dimensions.get("screen");
