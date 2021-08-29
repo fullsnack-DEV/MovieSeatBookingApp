@@ -5,6 +5,9 @@
  Dribble post Link : https://dribbble.com/shots/15258922-Cinema-App-P2
  
  
+ Project Planning: https://exciting-fold-d6e.notion.site/Movie-Seat-Booking-App-bee7aff6e4e049e5a64afbec873169bb
+ 
+ 
  Application is build using Expo
 
  In the Project I Have Fetched the IMDB API  to display the Movies.
